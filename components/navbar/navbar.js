@@ -9,6 +9,17 @@ export default function Navbar() {
   const pathname = usePathname();
   return (
     <nav className="container">
+      <div className="logo-div">
+        <Link href="/">
+          <img
+            className="logo-navbar "
+            src="/SG-logo-modified.png"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+        </Link>
+      </div>
       <ul className="link-list">
         {links.map((link) => (
           <NavItem
