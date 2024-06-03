@@ -1,0 +1,30 @@
+.container {
+  background-image: url("/path/to/your/image.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 1rem;
+}
+
+.signInButton {
+  background-color: #4285f4;
+  color: white;
+}
