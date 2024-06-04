@@ -1,5 +1,5 @@
 .container {
-  background-image: url("/path/to/your/image.jpg");
+  /* background-image: url("/pics/round-logo.png"); */
   background-size: cover;
   height: 100vh;
   display: flex;
