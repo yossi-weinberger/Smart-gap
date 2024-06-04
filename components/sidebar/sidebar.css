@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(247, 243, 196);
+  /* width: 60px; */
+  width: var(--sidebar-width-closed);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.container:hover,
+body.sidebar-open .container {
+  width: var(--sidebar-width-open);
+  /* transition: width 0.3s ease; */
+}
+
+.container:hover img.logo-sidebar,
+body.sidebar-open .container img.logo-sidebar {
+  transform: scale(1.6);
+}
+
+img.logo-sidebar {
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+/* img.logo-sidebar:hover {
+  transform: scale(1.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+} */
+
+/* .sidebar {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  width: var(--sidebar-width-closed);
+  height: calc(100vh - var(--nav-height));
+  background-color: black;
+  transition: width 0.3s ease;
+  overflow: hidden;
+} */
+
+/* .sidebar:hover {
+  width: var(--sidebar-width-open);
+} */
+
+/* .container:hover {
+  width: 110px;
+} */
+
+.logo-div {
+  margin: 20px;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.list-item {
+  /* margin-bottom: 20px; */
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding: 10px; */
+  color: rgb(133, 49, 252);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  height: 100%;
+  /* border-bottom: 5px solid rgb(133, 49, 252); */
+  /* font-size: 30px; */
+}
+
+.link:hover {
+  color: rgb(17, 0, 86);
+  transition: color 0.3s ease;
+  border-bottom: 5px solid rgb(133, 49, 252);
+}
+
+.link-icon {
+  margin-bottom: 10px;
+}
+
+.link-text {
+  display: none;
+  font-size: 18px;
+  white-space: nowrap;
+  /* transition: all 0.3s ease; */
+}
+
+.container:hover .link-text {
+  display: inline;
+  /* transition: all 0.3s ease; */
+}
+
+.list-item {
+  display: table;
+  height: 100%;
+}
+
+.link-list {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border-bottom: 5px solid rgb(143, 0, 0); */
+  margin: 15px;
+  height: 100%;
+}
