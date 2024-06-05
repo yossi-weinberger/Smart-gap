@@ -4,13 +4,13 @@ const HomeIcon = () => (
   <img src="/icons/home.svg" alt="Home" className="icon" />
 );
 const DashboardIcon = () => (
-  <img src="/icons/pie.svg" alt="Dashboard" className="icon" />
+  <img src="/icons/graphs.svg" alt="Dashboard" className="icon" />
 );
 const InfoIcon = () => (
   <img src="/icons/info.svg" alt="About" className="icon" />
 );
 const ContactIcon = () => (
-  <img src="/icons/mail.svg" alt="Contact" className="icon" />
+  <img src="/icons/about.svg" alt="Contact" className="icon" />
 );
 
 export const links = [
