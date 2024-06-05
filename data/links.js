@@ -15,12 +15,12 @@ const ContactIcon = () => (
 
 export const links = [
   {
-    title: "Home",
+    title: "בית",
     href: "/",
     icon: <HomeIcon />,
   },
   {
-    title: "Dashboard",
+    title: "דשבורד",
     href: "/dashboard",
     icon: <DashboardIcon />,
   },
@@ -30,12 +30,12 @@ export const links = [
   //   excluded: true,
   // },
   {
-    title: "About",
+    title: "אודות",
     href: "/about",
     icon: <InfoIcon />,
   },
   {
-    title: "Contact",
+    title: "צור קשר",
     href: "/contact",
     icon: <ContactIcon />,
   },
