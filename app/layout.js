@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <SessionProvider>
           {/* <Navbar /> */}
           <Sidebar />
-          <main>{children}</main>
+          <main class="content-container">{children}</main>
         </SessionProvider>
       </body>
     </html>

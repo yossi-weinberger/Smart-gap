@@ -8,16 +8,20 @@
   height: 100vh; /* Full viewport height */
   position: fixed; /* Fixed position */
   top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
+  left: auto;
+  right: 0;
   z-index: 1000; /* Ensure the sidebar is on top */
   transition: width 0.3s ease; /* Smooth transition for width change */
-  overflow: hidden; /* Hide overflow content */
+  overflow-wrap: break-word; /* שובר מילים ארוכות לשורות חדשות */
+  word-break: break-word; /* שובר מילים ארוכות לשורות חדשות במקרה הצורך */
 }
 
 /* Expand the sidebar on hover or when the sidebar is open */
 .container:hover,
 body.sidebar-open .container {
-  width: var(--sidebar-width-open); /* Open width of the sidebar */
+  width: var(--sidebar-width-open);
+
+  /* width: var(--sidebar-width-open);  */
 }
 
 /* Scale the logo on hover or when the sidebar is open */
