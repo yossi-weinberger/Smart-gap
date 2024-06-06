@@ -56,7 +56,7 @@ export default function Sidebar() {
 function NavItem({ link, current }) {
   return (
     <li className="list-item">
-      <Link className={`link ${current && "current"}`} href={link.href}>
+      <Link className={`link ${current ? "current" : ""}`} href={link.href}>
         <div className="link-icon">{link.icon}</div>
         <div className="link-text">{link.title}</div>
       </Link>

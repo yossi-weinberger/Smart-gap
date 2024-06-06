@@ -41,6 +41,11 @@ img.logo-sidebar {
   margin: 20px; /* Margin around the logo */
 }
 
+img.logo-sidebar:hover {
+  filter: brightness(1.2) contrast(1.2) saturate(1.5)
+    drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
+}
+
 /* Navigation links list styling */
 .link-list {
   display: flex; /* Use flexbox layout */
@@ -71,12 +76,44 @@ img.logo-sidebar {
 .link:hover {
   color: rgb(17, 0, 86); /* New color on hover */
   transition: color 0.3s ease; /* Smooth transition for color change */
-  border-bottom: 5px solid rgb(133, 49, 252); /* Add bottom border */
+  /* border-bottom: 5px solid rgb(133, 49, 252); */
+  /* border-top: 5px solid rgb(133, 49, 252); */
+  /* border-radius: 5px 5px 5px; */
+}
+
+/* .link:hover .link-text {
+  text-decoration: underline;
+  text-decoration-color: rgb(17, 0, 86);
+  text-decoration-style: dashed;
+  text-decoration-thickness: 2px;
+} */
+
+/* .link.current {
+  background-color: rgb(133, 49, 252);
+  color: white;
+  border-radius: 5px;
+  padding: calc(--sidebar-width-open);
+} */
+
+.link.current .link-icon {
+  background-color: #0fc4bf;
+  border-radius: 25%;
+  padding: 5px;
+}
+
+.link:hover .link-icon img {
+  filter: brightness(1.2) contrast(1.2) saturate(1.5)
+    drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
+}
+
+.link.current .link-icon img {
+  filter: brightness(1.2) contrast(1.2) saturate(1.5)
+    drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
 }
 
 /* Icon styling inside the link */
 .link-icon {
-  margin-bottom: 10px; /* Bottom margin */
+  margin-bottom: 45px; /* Bottom margin */
 }
 
 /* Text styling inside the link */
@@ -88,7 +125,8 @@ img.logo-sidebar {
   transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for appearance */
   height: 0; /* Initial height */
   overflow: hidden; /* Hide overflow content */
-  margin-top: 5px; /* Top margin */
+  /* margin-top: 5px; 
+  padding-top: 50px; */
   position: absolute; /* Absolute positioning */
   bottom: 35px; /* Position below the icon */
 }
