@@ -1,7 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar/navbar";
+// import Navbar from "@/components/navbar/navbar";
 import { SessionProvider } from "next-auth/react";
 import Sidebar from "@/components/sidebar/sidebar";
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <SessionProvider>
           {/* <Navbar /> */}
           <Sidebar />
-          <main class="content-container">{children}</main>
+          <main className="content-container">{children}</main>
         </SessionProvider>
       </body>
     </html>

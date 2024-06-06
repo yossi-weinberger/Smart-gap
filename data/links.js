@@ -12,6 +12,9 @@ const InfoIcon = () => (
 const ContactIcon = () => (
   <img src="/icons/about.svg" alt="Contact" className="icon" />
 );
+const LoginIcon = () => (
+  <img src="/icons/about.svg" alt="Contact" className="icon" />
+);
 
 export const links = [
   {
@@ -38,6 +41,11 @@ export const links = [
     title: "צור קשר",
     href: "/contact",
     icon: <ContactIcon />,
+  },
+  {
+    title: "התחברות",
+    href: "/auth/login",
+    icon: <LoginIcon />,
   },
   // {
   //   title: "New product",
