@@ -1,7 +1,7 @@
 // HeroSection.jsx
 import React from "react";
 import Image from "next/image";
-import "./HeroSection.css";
+import "./heroSection.css";
 
 function HeroSection() {
   cache: "no-cache";
