@@ -122,6 +122,7 @@ img.screen-image {
 
 .cta-button:hover {
   background: linear-gradient(341deg, #210c3f -7.4%, #4b1d8f 91.35%);
+  cursor: pointer;
 }
 /* 
 @media (max-width: 991px) {
