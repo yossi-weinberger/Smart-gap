@@ -3,7 +3,8 @@
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center items along the cross axis */
   flex-direction: column; /* Arrange items in a column */
-  background-color: rgb(247, 243, 196); /* Set background color */
+  background-color: rgb(255, 255, 255); /* Set background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: var(--sidebar-width-closed); /* Closed width of the sidebar */
   height: 100vh; /* Full viewport height */
   position: fixed; /* Fixed position */
@@ -20,6 +21,7 @@
 .container:hover,
 body.sidebar-open .container {
   width: var(--sidebar-width-open);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   /* width: var(--sidebar-width-open);  */
 }
@@ -99,6 +101,7 @@ img.logo-sidebar:hover {
   background-color: #0fc4bf;
   border-radius: 25%;
   padding: 5px;
+  filter: none;
 }
 
 .link:hover .link-icon img {
@@ -114,6 +117,7 @@ img.logo-sidebar:hover {
 /* Icon styling inside the link */
 .link-icon {
   margin-bottom: 45px; /* Bottom margin */
+  filter: grayscale(100%);
 }
 
 /* Text styling inside the link */

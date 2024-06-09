@@ -1,0 +1,23 @@
+.data-container {
+  position: fixed;
+  top: 0;
+  right: var(--sidebar-width-closed);
+  bottom: 0;
+  width: calc(100% - var(--sidebar-width-closed));
+  height: 100%;
+  transition: right 0.3s ease-in-out, width 0.3s ease-in-out;
+  overflow: auto;
+}
+
+.data {
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.sidebar-open .data-container {
+  right: var(--sidebar-width-open);
+  width: calc(100% - var(--sidebar-width-open));
+}

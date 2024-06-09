@@ -1,10 +1,11 @@
-// HeroSection.jsx
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import "./heroSection.css";
 
 function HeroSection() {
-  cache: "no-cache";
+  const router = useRouter();
   return (
     <div className="hero-section">
       {/* <Image
@@ -72,7 +73,12 @@ function HeroSection() {
                 </div>
               ))}
             </div>
-            <button className="cta-button">התחברות</button>
+            <button
+              className="cta-button"
+              onClick={() => router.push("/auth/login")}
+            >
+              התחברות
+            </button>
           </div>
         </div>
       </div>
