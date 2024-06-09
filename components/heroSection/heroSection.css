@@ -110,6 +110,10 @@ img.screen-image {
   letter-spacing: 1.15px;
   transition: background-color 0.3s ease;
 }
+.cta-button:hover {
+  background: linear-gradient(341deg, #210c3f -7.4%, #4b1d8f 91.35%);
+  cursor: pointer;
+}
 
 /* img.logo {
   width: 100px;
@@ -120,10 +124,6 @@ img.screen-image {
   align-items: center;
 } */
 
-.cta-button:hover {
-  background: linear-gradient(341deg, #210c3f -7.4%, #4b1d8f 91.35%);
-  cursor: pointer;
-}
 /* 
 @media (max-width: 991px) {
   .hero-section {

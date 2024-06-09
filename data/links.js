@@ -15,6 +15,9 @@ const ContactIcon = () => (
 const LoginIcon = () => (
   <img src="/icons/about.svg" alt="Contact" className="icon" />
 );
+const DataIcon = () => (
+  <img src="/icons/about.svg" alt="Contact" className="icon" />
+);
 
 export const links = [
   {
@@ -26,6 +29,11 @@ export const links = [
     title: "דשבורד",
     href: "/dashboard",
     icon: <DashboardIcon />,
+  },
+  {
+    title: "נתונים",
+    href: "/data",
+    icon: <DataIcon />,
   },
   // {
   //   title: "FrameworksId",

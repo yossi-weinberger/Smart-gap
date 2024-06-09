@@ -23,8 +23,8 @@ export default function Login() {
         <div className={styles.buttonContainer}>
           <p className={styles.title}>Welcome,{session.user.name}</p>
           {/* <button onClick={() => signOut()} className={styles.button}>
-            Sign out
-          </button> */}
+              Sign out
+            </button> */}
           {renderButton("Sign out", () => signOut("google"))}
         </div>
       </div>
