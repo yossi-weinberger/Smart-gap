@@ -9,7 +9,9 @@
 
 .hero-content {
   display: flex;
+  /* margin-top: 50px; */
   gap: 40px;
+
   align-items: center;
   /* background-image: url("../../public/circle.svg");
   background-repeat: no-repeat;
@@ -28,26 +30,27 @@
 }
 
 .purple-circle {
-  /* position: absolute;
-  top: 100%;
-  left: 100%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  transform: translate(-35%, -10%);
   width: 170%;
   height: auto;
-  z-index: 50; */
+  z-index: 50;
 }
 img.purple-circle {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 150%;
-  height: 150%;
+  top: 70;
+  left: 50;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
   z-index: 1;
 }
 
 img.screen-image {
   position: absolute;
+  transform: translate(-5%, -10%);
   top: 0;
   left: 0;
   width: 150%;
@@ -64,10 +67,13 @@ img.screen-image {
   text-align: right;
 }
 
-.title {
+.site-title {
   font: 700 60px/1.2 "Heebo", sans-serif;
   color: #91229a;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  /* margin-bottom: -50px; */
+  /* margin-top: 80px; */
+  text-align: right;
 }
 
 .features-grid {
@@ -104,6 +110,15 @@ img.screen-image {
   letter-spacing: 1.15px;
   transition: background-color 0.3s ease;
 }
+
+/* img.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 .cta-button:hover {
   background: linear-gradient(341deg, #210c3f -7.4%, #4b1d8f 91.35%);
