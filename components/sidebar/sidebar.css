@@ -1,144 +1,104 @@
 .container {
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items along the cross axis */
-  flex-direction: column; /* Arrange items in a column */
-  background-color: rgb(255, 255, 255); /* Set background color */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: var(--sidebar-width-closed); /* Closed width of the sidebar */
-  height: 100vh; /* Full viewport height */
-  position: fixed; /* Fixed position */
-  top: 0; /* Align to the top */
+  width: var(--sidebar-width-closed);
+  height: 100vh;
+  position: fixed;
+  top: 0;
   left: auto;
   right: 0;
-  z-index: 1000; /* Ensure the sidebar is on top */
-  transition: width 0.3s ease; /* Smooth transition for width change */
-  overflow-wrap: break-word; /* שובר מילים ארוכות לשורות חדשות */
-  word-break: break-word; /* שובר מילים ארוכות לשורות חדשות במקרה הצורך */
+  z-index: 1000;
+  transition: width 0.3s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Expand the sidebar on hover or when the sidebar is open */
 .container:hover,
 body.sidebar-open .container {
   width: var(--sidebar-width-open);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
 }
 
-/* Scale the logo on hover or when the sidebar is open */
 .container:hover img.logo-sidebar,
 body.sidebar-open .container img.logo-sidebar {
-  transform: scale(1.6); /* Scale the logo */
+  transform: scale(1.6);
+  transition: transform 0.3s ease;
 }
 
-/* Logo styling */
 img.logo-sidebar {
-  width: 50px; /* Set the width of the logo */
-  transition: transform 0.3s ease; /* Smooth transition for scaling */
+  width: 50px;
+  /* transition: transform 0.3s ease; */
+  transition: transform 0.3s ease, ter 0.3s ease;
 }
-
-/* Logo container styling */
-.logo-div {
-  margin: 20px; /* Margin around the logo */
+fil .logo-div {
+  margin: 20px;
 }
 
 img.logo-sidebar:hover {
   filter: brightness(1.2) contrast(1.2) saturate(1.5)
     drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
 }
 
-/* Navigation links list styling */
 .link-list {
-  display: flex; /* Use flexbox layout */
-  flex-direction: column; /* Arrange items in a column */
-  align-items: center; /* Center items along the cross axis */
-  margin-top: 20px; /* Top margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  list-style-type: none;
 }
 
-/* Individual list item styling */
 .list-item {
-  width: 100%; /* Full width */
+  margin-bottom: 40px; /* Add margin to create space between icons */
 }
 
-/* Link styling */
 .link {
-  display: flex; /* Use flexbox layout */
-  flex-direction: column; /* Arrange items in a column */
-  align-items: center; /* Center items along the cross axis */
-  justify-content: center; /* Center items along the main axis */
-  color: rgb(133, 49, 252); /* Set text color */
-  text-decoration: none; /* Remove underline */
-  transition: color 0.3s ease; /* Smooth transition for color change */
-  height: 100%; /* Full height */
-  position: relative; /* Position relative for absolute positioning inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(133, 49, 252);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
 }
 
-/* Change color on hover */
-.link:hover {
-  color: rgb(17, 0, 86); /* New color on hover */
-  transition: color 0.3s ease; /* Smooth transition for color change */
-}
-
-.link.current .link-icon {
+.link:hover,
+.link.current {
+  color: rgb(17, 0, 86);
   background-color: #f0eafb;
   border-radius: 25%;
   padding: 5px;
-  filter: none;
+  transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
 }
 
-.link:hover .link-icon img {
-  filter: brightness(1.2) contrast(1.2) saturate(1.5);
-}
-.link:hover .link-icon {
-  background-color: #f0eafb;
-  border-radius: 25%;
-  padding: 5px;
-}
-.link.current .link-icon img {
-  filter: brightness(1.2) contrast(1.2) saturate(1.5);
-}
-
-/* Icon styling inside the link */
 .link-icon {
-  margin-bottom: 45px; /* Bottom margin */
   filter: grayscale(100%);
+  transition: filter 0.3s ease;
 }
 
-/* Text styling inside the link */
+.link:hover .link-icon,
+.link.current .link-icon {
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
 .link-text {
-  opacity: 0; /* Initially hidden */
-  transform: translateY(-10px); /* Initially translated up */
-  white-space: nowrap; /* Prevent text wrap */
-  font-size: 18px; /* Font size */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for appearance */
-  height: 0; /* Initial height */
-  overflow: hidden; /* Hide overflow content */
-  position: absolute; /* Absolute positioning */
-  bottom: 35px; /* Position below the icon */
+  opacity: 0;
+  white-space: nowrap;
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: -25px;
 }
 
-/* Show text on hover or when the sidebar is open */
 .container:hover .link-text,
 body.sidebar-open .link-text {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* No translation */
-  height: auto; /* Auto height */
-  overflow: visible; /* Show overflow content */
-}
-
-/* Additional styling for list items */
-.list-item {
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items along the cross axis */
-  flex-direction: column; /* Arrange items in a column */
-  height: 100%; /* Full height */
-}
-
-/* Additional styling for the link list */
-.link-list {
-  flex: 1; /* Take remaining space */
-  display: flex; /* Use flexbox layout */
-  flex-direction: column; /* Arrange items in a column */
-  justify-content: space-around; /* Space items evenly */
-  align-items: center; /* Center items along the cross axis */
-  margin: 15px; /* Margin around */
-  height: 100%; /* Full height */
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
