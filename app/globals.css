@@ -43,7 +43,8 @@
 
   /* --nav-height: 50px; */
   --sidebar-width-closed: 60px;
-  --sidebar-width-open: 110px; /* Adjust this as per your sidebar width */
+  /* --sidebar-width-open: 110px;  V1*/
+  --sidebar-width-open: 125px; /* V2 */
 }
 /* 
 @media (prefers-color-scheme: dark) {
@@ -87,14 +88,14 @@
 
 .content-container {
   margin-right: var(--sidebar-width-closed);
-  transition: margin-right 0.3s ease;
+  transition: 0.3s ease;
   width: calc(100% - var(--sidebar-width-closed));
 }
 
 body.sidebar-open .content-container {
   margin-right: var(--sidebar-width-open);
   width: calc(100% - var(--sidebar-width-open));
-  transition: margin-right 0.3s ease;
+  transition: 0.3s ease;
   /* font-family: heebo; */
 }
 

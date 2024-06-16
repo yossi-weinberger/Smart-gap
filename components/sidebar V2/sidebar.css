@@ -8,12 +8,10 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left: auto;
   right: 0;
   z-index: 1000;
   transition: width 0.3s ease;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  overflow: hidden;
 }
 
 .container:hover,
@@ -22,64 +20,59 @@ body.sidebar-open .container {
   transition: width 0.3s ease;
 }
 
-.container:hover img.logo-sidebar,
-body.sidebar-open .container img.logo-sidebar {
+.container:hover img.logo-sidebar {
   transform: scale(1.6);
   transition: transform 0.3s ease;
 }
 
 img.logo-sidebar {
   width: 50px;
-  /* transition: transform 0.3s ease; */
-  transition: transform 0.3s ease, ter 0.3s ease;
+  transition: transform 0.3s ease;
 }
+
 .logo-div {
   margin: 20px;
 }
 
 img.logo-sidebar:hover {
-  filter: brightness(1.2) contrast(1.2) saturate(1.5)
-    drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
+  filter: brightness(1.1) contrast(1.1) saturate(1.3)
+    drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.3));
   transition: filter 0.3s ease;
 }
 
 .link-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+  align-items: flex-end;
+  /* margin-top: 20px; */
   padding: 10px;
   list-style-type: none;
+  width: 100%;
 }
 
 .list-item {
-  margin-bottom: 40px; /* Add margin to create space between icons */
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 .link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: rgb(133, 49, 252);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  position: relative;
-  transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+  /* display: flex; */
+  /* align-items: center; */
+  /* color: rgb(133, 49, 252); */
+  /* text-decoration: none; */
+  /* transition: color 0.3s ease; */
+  /* position: relative; */
+  /* width: 100%; */
+  /* padding: 10px; */
+  /* box-sizing: border-box; */
 }
 
-.link:hover,
-.link.current {
+.link:hover .link-content,
+.link.current .link-content {
   color: rgb(17, 0, 86);
   background-color: #f0eafb;
-  border-radius: 25%;
-  padding: 5px;
-  transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
-}
-
-.link-icon {
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  border-radius: 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .link:hover .link-icon,
@@ -88,13 +81,25 @@ img.logo-sidebar:hover {
   transition: filter 0.3s ease;
 }
 
+.link-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+  transition: color 0.3s ease;
+}
+
+.link-icon {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+  /* Add margin-right to ensure space between icon and text */
+}
+
 .link-text {
   opacity: 0;
   white-space: nowrap;
-  font-size: 18px;
+  /* font-size: 18px; */
   transition: opacity 0.3s ease;
-  position: absolute;
-  bottom: -25px;
 }
 
 .container:hover .link-text,
