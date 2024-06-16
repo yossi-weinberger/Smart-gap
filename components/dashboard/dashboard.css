@@ -15,9 +15,16 @@
   border: none;
   margin: 0;
   padding: 0;
+  transition: width 0.3s ease-in-out;
+  /* position: absolute;
+  left: -9999px; */
 }
 
 body.sidebar-open .dashboard-container {
   right: var(--sidebar-width-open);
   width: calc(100% - var(--sidebar-width-open));
+}
+
+.dashboard-div {
+  transition: width 0.3s ease-in-out;
 }
