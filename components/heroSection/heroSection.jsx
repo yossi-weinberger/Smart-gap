@@ -8,14 +8,14 @@ function HeroSection() {
   const router = useRouter();
   return (
     <div className="hero-section">
-      {/* <Image
+      <Image
         src="/sg-logo.svg"
         alt="logo"
         width={200}
         height={200}
         // objectFit="contain"
         className="logo"
-      /> */}
+      />
       <h1 className="site-title">
         פלטפורמת ניתוח נתונים <br></br>להגדלת האימפקט החברתי
       </h1>
