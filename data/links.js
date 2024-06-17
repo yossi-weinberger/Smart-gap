@@ -13,10 +13,13 @@ const ContactIcon = () => (
   <img src="/icons/about.svg" alt="Contact" className="icon" />
 );
 const LoginIcon = () => (
-  <img src="/icons/about.svg" alt="Contact" className="icon" />
+  <img src="/icons/logout.svg" alt="Contact" className="icon" />
+);
+const LogoutIcon = () => (
+  <img src="/icons/logout.svg" alt="Contact" className="icon" />
 );
 const DataIcon = () => (
-  <img src="/icons/about.svg" alt="Contact" className="icon" />
+  <img src="/icons/data.svg" alt="Contact" className="icon" />
 );
 
 export const links = [
@@ -35,11 +38,7 @@ export const links = [
     href: "/data",
     icon: <DataIcon />,
   },
-  // {
-  //   title: "FrameworksId",
-  //   href: "/frameworksId",
-  //   excluded: true,
-  // },
+
   {
     title: "אודות",
     href: "/about",
@@ -54,14 +53,12 @@ export const links = [
     title: "התחברות",
     href: "/auth/login",
     icon: <LoginIcon />,
+    showWhenLoggedOut: true,
   },
-  // {
-  //   title: "New product",
-  //   href: "/new-category",
-  // },
-  // {
-  //   title: "Speakers",
-  //   href: "/product/:id",
-  //   excluded: true,
-  // },
+  {
+    title: "התנתקות",
+    href: "/auth/login",
+    icon: <LogoutIcon />,
+    showWhenLoggedIn: true,
+  },
 ];

@@ -1,4 +1,5 @@
 // "use client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { links } from "@/data/links";
 import { usePathname } from "next/navigation";
@@ -8,6 +9,8 @@ import { useEffect } from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const isLoggedIn = session !== null;
 
   useEffect(() => {
     const container = document.querySelector(".container");
@@ -41,13 +44,22 @@ export default function Sidebar() {
         </Link>
       </div>
       <ul className="link-list">
-        {links.map((link) => (
-          <NavItem
-            key={nanoid()}
-            link={link}
-            current={pathname === link.href}
-          />
-        ))}
+        {links.map((link) => {
+          if (
+            (link.showWhenLoggedIn && isLoggedIn) ||
+            (link.showWhenLoggedOut && !isLoggedIn) ||
+            (!link.showWhenLoggedIn && !link.showWhenLoggedOut)
+          ) {
+            return (
+              <NavItem
+                key={nanoid()}
+                link={link}
+                current={pathname === link.href}
+              />
+            );
+          }
+          return null;
+        })}
       </ul>
     </nav>
   );
