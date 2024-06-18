@@ -6,20 +6,20 @@ const HomeIcon = () => (
 const DashboardIcon = () => (
   <img src="/icons/graphs.svg" alt="Dashboard" className="icon" />
 );
+const DataIcon = () => (
+  <img src="/icons/data.svg" alt="Contact" className="icon" />
+);
 const InfoIcon = () => (
   <img src="/icons/info.svg" alt="About" className="icon" />
 );
 const ContactIcon = () => (
-  <img src="/icons/about.svg" alt="Contact" className="icon" />
+  <img src="/icons/contact.svg" alt="Contact" className="icon" />
 );
 const LoginIcon = () => (
-  <img src="/icons/logout.svg" alt="Contact" className="icon" />
+  <img src="/icons/login.svg" alt="Contact" className="icon" />
 );
 const LogoutIcon = () => (
   <img src="/icons/logout.svg" alt="Contact" className="icon" />
-);
-const DataIcon = () => (
-  <img src="/icons/data.svg" alt="Contact" className="icon" />
 );
 
 export const links = [
