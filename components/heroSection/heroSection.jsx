@@ -8,23 +8,24 @@ function HeroSection() {
   const router = useRouter();
   return (
     <div className="hero-section">
-      <Image
-        src="/sg-logo.svg"
-        alt="logo"
-        width={200}
-        height={200}
-        // objectFit="contain"
-        className="logo"
-        style={{
-          maxWidth: "100%",
-          height: "auto",
-          objectFit: "contain",
-        }}
-      />
+      <div className="logo-wrapper">
+        <Image
+          src="/sg-logo.svg"
+          alt="logo"
+          width={200}
+          height={200}
+          className="logo"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            objectFit: "contain",
+          }}
+        />
+      </div>
       <h1 className="site-title">
         פלטפורמת ניתוח נתונים <br></br>להגדלת האימפקט החברתי
       </h1>
-      <Image
+      {/* <Image
         src="/circle.svg"
         alt="purple-circle"
         width={1200}
@@ -35,7 +36,7 @@ function HeroSection() {
           height: "auto",
           objectFit: "contain",
         }}
-      />
+      /> */}
       <div className="hero-content">
         <div className="image-column">
           <div className="image-wrapper">
@@ -51,21 +52,22 @@ function HeroSection() {
                 objectFit: "contain",
               }}
             />
-            {/* <Image
+            <Image
               src="/circle.svg"
               alt="purple-circle"
               width={1200}
               height={1200}
-              objectFit="contain"
               className="purple-circle"
-            /> */}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
+            />
           </div>
         </div>
         <div className="content-column">
           <div className="content-wrapper">
-            {/* <h1 className="site-title">
-              פלטפורמת ניתוח נתונים להגדלת האימפקט החברתי
-            </h1> */}
             <div className="features-grid">
               {[
                 "ידידותית למשתמש",
