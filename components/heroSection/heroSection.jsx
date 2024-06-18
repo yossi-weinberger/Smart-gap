@@ -15,6 +15,11 @@ function HeroSection() {
         height={200}
         // objectFit="contain"
         className="logo"
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "contain",
+        }}
       />
       <h1 className="site-title">
         פלטפורמת ניתוח נתונים <br></br>להגדלת האימפקט החברתי
@@ -24,8 +29,12 @@ function HeroSection() {
         alt="purple-circle"
         width={1200}
         height={1200}
-        objectFit="contain"
         className="purple-circle"
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "contain",
+        }}
       />
       <div className="hero-content">
         <div className="image-column">
@@ -35,8 +44,12 @@ function HeroSection() {
               alt="Screens"
               width={1200}
               height={1200}
-              objectFit="contain"
               className="screen-image"
+              style={{
+                // maxWidth: "100%",
+                // height: "auto",
+                objectFit: "contain",
+              }}
             />
             {/* <Image
               src="/circle.svg"
@@ -66,8 +79,8 @@ function HeroSection() {
                   <Image
                     src="/icons/V-icon.svg"
                     alt="Feature Icon"
-                    width={44}
-                    height={44}
+                    width={440}
+                    height={440}
                     className="feature-icon"
                   />
                 </div>
