@@ -86,10 +86,29 @@
   margin: 0;
 }
 
+.app-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  /* min-height: 100vh; */
+}
+
+.content-container {
+  grid-column: 2;
+  grid-row: 1;
+  /* overflow-y: auto; */
+}
+
+footer {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 .content-container {
   margin-right: var(--sidebar-width-closed);
   transition: 0.3s ease;
   width: calc(100% - var(--sidebar-width-closed));
+  max-height: 50vh;
 }
 
 body.sidebar-open .content-container {
