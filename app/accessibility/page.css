@@ -1,0 +1,62 @@
+.accessibility-page {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: "Heebo", sans-serif;
+  line-height: 1.6;
+  text-align: right;
+  background-color: #dbd5e6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.accessibility-page h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #4a4a4a;
+  font-weight: 700;
+}
+
+.accessibility-page h2 {
+  font-size: 28px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #6b6b6b;
+  font-weight: 500;
+}
+
+.accessibility-page p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.accessibility-page ul {
+  margin-bottom: 30px;
+  padding-right: 30px;
+  direction: rtl;
+}
+
+.accessibility-page li {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.accessibility-page li::marker {
+  color: #6b6b6b;
+}
+
+.accessibility-page a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.accessibility-page a:hover {
+  text-decoration: underline;
+}
+
+.accessibility-page .content {
+  background-color: #dbd5e6;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
