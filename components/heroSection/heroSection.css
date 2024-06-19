@@ -135,7 +135,7 @@ img.screen-image {
   .hero-section {
     padding-right: 0;
     padding-top: 20px;
-    min-height: calc(100vh - 45px);
+    min-height: calc(100vh + 150px);
     display: flex;
     flex-direction: column;
     align-items: center;
