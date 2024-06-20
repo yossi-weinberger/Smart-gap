@@ -1,0 +1,275 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, #f0eafb 0%, #d7d0e1 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  width: 400px;
+  background: linear-gradient(#fadef7, #ffffff) padding-box,
+    linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  border: 5px solid transparent;
+  padding: 10px 24px;
+  font-size: 14px;
+  direction: rtl;
+  font-family: inherit;
+  color: #717171;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 1512px;
+  height: 100%;
+  max-height: 982px;
+  position: relative;
+}
+
+.showButton {
+  padding: 12px 60px;
+  position: absolute;
+  left: 23.7%;
+  top: 1.2%;
+  background: linear-gradient(185deg, #0fc4bf 0%, #0273af 100%);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 35px;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.showButton div {
+  color: white;
+  font-size: 22px;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+}
+
+.leftBackground {
+  width: 60%;
+  height: 100%;
+  left: -28.3%;
+  /* top: 14.5%; */
+  position: absolute;
+  /* position: relative; */
+}
+
+.purpleCircle,
+.topRightIcon,
+.middleRightIcon,
+.bottomRightIcon,
+.bottomLeftIcon {
+  position: absolute;
+}
+
+img.purpleCircle {
+  left: 0;
+  top: 0;
+  width: 94.3%;
+  height: 100%;
+}
+
+.topRightIcon {
+  left: 71.6%;
+  top: 4.7%;
+  width: 16.2%;
+  height: 17.2%;
+}
+
+.middleRightIcon {
+  left: 83.4%;
+  top: 27.2%;
+  width: 16.2%;
+  height: 17.2%;
+}
+
+.bottomRightIcon {
+  left: 83.8%;
+  top: 55.6%;
+  width: 16.2%;
+  height: 17.2%;
+}
+
+.bottomLeftIcon {
+  left: 69.7%;
+  top: 78.2%;
+  width: 16.2%;
+  height: 17.2%;
+}
+.rightContent {
+  width: 44.9%;
+  height: 82%;
+  right: 27.6%;
+  top: 9%;
+  position: absolute;
+}
+
+.title {
+  width: 57%;
+  position: absolute;
+  right: 6.3%;
+  top: 0.7%;
+  text-align: right;
+  color: #91229a;
+  font-size: 3.97vw;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  line-height: 1.33;
+}
+
+.formWrapper {
+  width: 86.9%;
+  height: 79.8%;
+  position: absolute;
+  right: 6.5%;
+  top: 15.8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3%;
+}
+
+.emailBox,
+.formBox {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.emailBox {
+  height: 10.4%;
+}
+
+.formBox {
+  height: 85.8%;
+}
+.underline {
+  text-decoration: underline;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.inputGroup label {
+  color: #333333;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 300px;
+  border-radius: 27px;
+  border: 1px solid #4d4d4d;
+  padding: 8px;
+}
+
+.inputGroup textarea {
+  height: 111px;
+}
+
+.submitButton {
+  width: 300px;
+  height: 44px;
+  background: linear-gradient(341deg, #351568 0%, #692ace 100%);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 35px;
+  color: white;
+  font-size: 22px;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .formWrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftBackground {
+    display: none;
+  }
+
+  .rightContent {
+    width: 90%;
+    height: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 20px auto;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 8vw;
+    position: relative;
+    right: auto;
+    top: auto;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .contentWrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .emailBox,
+  .formBox {
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .inputGroup input,
+  .inputGroup textarea,
+  .submitButton {
+    width: 100%;
+  }
+}

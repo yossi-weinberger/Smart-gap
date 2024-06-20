@@ -7,7 +7,7 @@ const DashboardIcon = () => (
   <img src="/icons/graphs.svg" alt="Dashboard" className="icon" />
 );
 const DataIcon = () => (
-  <img src="/icons/data.svg" alt="Contact" className="icon" />
+  <img src="/icons/table.svg" alt="Contact" className="icon" />
 );
 const InfoIcon = () => (
   <img src="/icons/info.svg" alt="About" className="icon" />

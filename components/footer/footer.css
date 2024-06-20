@@ -36,7 +36,7 @@
   display: flex;
 }
 
-.social-icon {
+/* .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,10 +47,21 @@
   margin: 0 0.5rem;
   color: #1a202c;
   transition: background-color 0.3s ease;
+} */
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 0.5rem;
+  /* filter: grayscale(100%) sepia(100%) hue-rotate(220deg) saturate(500%)
+    brightness(100%); */
+  transition: 0.3s ease;
 }
 
 .social-icon:hover {
-  background-color: #805ad5;
+  transform: scale(1.1);
+  opacity: 0.9;
+  transition: 0.3s ease;
 }
 
 .social-icon svg {
@@ -60,11 +71,36 @@
 
 @media (max-width: 767px) {
   .footer-container {
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     padding: 0.5rem 0;
   }
 
   .footer-menu {
     margin-bottom: 0.5rem;
   }
+}
+.accessibility {
+  position: relative;
+  color: #dbd5e6; /* צבע סגול בהיר */
+  text-decoration: none; /* להסיר את הקו התחתון המובנה */
+  transition: color 0.3s ease;
+}
+
+.accessibility::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2px; /* מרחק קטן מתחת לטקסט */
+  width: 0;
+  height: 2px; /* גובה הקו */
+  background-color: #dbd5e6; /* צבע הקו */
+  transition: width 0.3s ease;
+}
+
+.accessibility:hover {
+  color: #dbd5e6; /* שינוי צבע הטקסט בעת ריחוף */
+}
+
+.accessibility:hover::after {
+  width: 100%;
 }

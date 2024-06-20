@@ -1,38 +1,68 @@
-"use client";
-import TodoList from "@/components/tasks/tasks";
+// app/contact/page.js
+import Contact from "@/components/contact/contact";
+import styles from "./ContactPage.module.css";
+import Image from "next/image";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
-    <div>
-      <h1>Contact</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit,
-        sed quo velit non laudantium nemo esse itaque doloribus minima eaque
-        corporis atque eos similique nesciunt animi expedita fugit omnis ex?
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-      </p>
-      {/* <center>
-        <ul>
-          <li>
-            <input type="checkbox" id="task1" />
-            <label for="task1">Hero section</label>
-          </li>
-          <li>
-            <input type="checkbox" id="task2" />
-            <label for="task2">משימה 2: עשה את זה</label>
-          </li>
-          <li>
-            <input type="checkbox" id="task3" />
-            <label for="task3">משימה 3: עשה גם את זה</label>
-          </li>
-        </ul>
-      </center> */}
-      <center>
-        <TodoList />
-      </center>
+    <div className={styles.container}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.leftBackground}>
+          <div className={styles.purpleCircle}>
+            <Image
+              src="/circle.svg"
+              alt="Purple circle"
+              width={699}
+              height={699}
+              className="purple-circle"
+            />
+          </div>
+          <div className={styles.topRightIcon}>
+            <Image
+              src="/icons/about.svg"
+              alt="Top right icon"
+              width={120}
+              height={120}
+            />
+          </div>
+          <div className={styles.middleRightIcon}>
+            <Image
+              src="/icons/graphs.svg"
+              alt="Middle right icon"
+              width={120}
+              height={120}
+            />
+          </div>
+          <div className={styles.bottomRightIcon}>
+            <Image
+              src="/icons/data.svg"
+              alt="Bottom right icon"
+              width={120}
+              height={120}
+            />
+          </div>
+          <div className={styles.bottomLeftIcon}>
+            <Image
+              src="/icons/info.svg"
+              alt="Bottom left icon"
+              width={120}
+              height={120}
+            />
+          </div>
+        </div>
+        <div className={styles.rightContent}>
+          <div className={styles.title}>נשמח לשוחח</div>
+          <div className={styles.formWrapper}>
+            <div className={styles.formContainer}>
+              <div>
+                <span>ניתן לשלוח מייל לכתובת: </span>
+                <span className={styles.underline}>max.bakehila@gmail.com</span>
+              </div>
+            </div>
+            <Contact />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
