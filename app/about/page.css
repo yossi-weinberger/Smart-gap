@@ -6,6 +6,7 @@
   text-align: center;
   background-color: #ece6f7;
   height: 100vh;
+  /* max-height: 2000vh; */
 }
 .about-container {
   max-width: 70vw;

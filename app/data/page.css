@@ -3,15 +3,21 @@
   top: 0;
   right: var(--sidebar-width-closed);
   bottom: 0;
-  width: calc(100% - var(--sidebar-width-closed));
-  height: 100%;
-  transition: right 0.3s ease-in-out, width 0.3s ease-in-out;
-  overflow: auto;
+  left: 0; /* תוסיף גם left: 0; כדי שה-div יתמלא במלואו */
+  transition: right 0.3s ease-in-out, left 0.3s ease-in-out; /* תוסיף גם left 0.3s ease-in-out; */
+  /* overflow: auto; */
+  /* overflow-x: scroll;
+  overflow-y: auto; */
 }
 
 .data {
-  width: 100%;
-  height: 100%;
+  position: absolute; /* שינוי ל-position: absolute; */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; /* שינוי ל-left: 0; */
+  width: 100%; /* תחזיר את ה- width ל-100%; */
+  height: 100%; /* תחזיר את ה- height ל-100%; */
   border: none;
   margin: 0;
   padding: 0;
@@ -19,5 +25,5 @@
 
 body.sidebar-open .data-container {
   right: var(--sidebar-width-open);
-  width: calc(100% - var(--sidebar-width-open));
+  /* width: calc(100% - var(--sidebar-width-open)); */
 }
