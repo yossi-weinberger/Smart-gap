@@ -1,5 +1,11 @@
+iframe {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .data-container {
   position: fixed;
+
   top: 0;
   right: var(--sidebar-width-closed);
   bottom: 0;
@@ -8,19 +14,6 @@
   /* overflow: auto; */
   /* overflow-x: scroll;
   overflow-y: auto; */
-}
-
-.data {
-  position: absolute; /* שינוי ל-position: absolute; */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; /* שינוי ל-left: 0; */
-  width: 100%; /* תחזיר את ה- width ל-100%; */
-  height: 100%; /* תחזיר את ה- height ל-100%; */
-  border: none;
-  margin: 0;
-  padding: 0;
 }
 
 body.sidebar-open .data-container {
