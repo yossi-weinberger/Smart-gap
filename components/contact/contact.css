@@ -96,7 +96,6 @@
 }
 
 .form-container .form-submit-btn:hover {
-  background-color: #ab3999;
   background: linear-gradient(#330f6e, #5c12d4) padding-box;
   color: #fff;
   transition: 0.3s ease;

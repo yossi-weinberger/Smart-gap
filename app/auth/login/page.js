@@ -5,7 +5,7 @@ import styles from "./Login.module.css";
 import GoogleIcon from "./google-icon";
 
 export default function Login() {
-  const { data: session, status, error } = useSession();
+  const { data: session, error } = useSession();
   const renderButton = (text, onClick) => (
     <button onClick={onClick} className={styles.button}>
       <GoogleIcon />
@@ -13,10 +13,10 @@ export default function Login() {
     </button>
   );
 
-  // if (error) {
-  //   console.error("Session error:", error);
-  //   return <div>An error occurred: {error.message}</div>;
-  // }
+  if (error) {
+    console.error("Session error:", error);
+    return <div>An error occurred: {error.message}</div>;
+  }
   if (session) {
     return (
       <div className={styles.container}>

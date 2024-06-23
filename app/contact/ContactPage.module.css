@@ -60,7 +60,6 @@
   width: 60%;
   height: 100%;
   left: -28.3%;
-  /* top: 14.5%; */
   position: relative;
 }
 
@@ -226,11 +225,6 @@ img.purple-circle {
     min-height: 100vh;
   }
 
-  .contentWrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .leftBackground {
     display: none;
   }
@@ -255,6 +249,8 @@ img.purple-circle {
   }
 
   .contentWrapper {
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: auto;
     position: relative;
