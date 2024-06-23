@@ -1,9 +1,11 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { links } from "@/data/links";
 import { usePathname } from "next/navigation";
 import "./navbar.css";
 import { nanoid } from "nanoid";
+im;
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -11,7 +13,7 @@ export default function Navbar() {
     <nav className="container">
       <div className="logo-div">
         <Link href="/">
-          <img
+          <Image
             className="logo-navbar "
             src="/SG-logo-modified.png"
             alt="Logo"

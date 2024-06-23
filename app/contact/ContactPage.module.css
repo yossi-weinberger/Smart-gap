@@ -61,8 +61,7 @@
   height: 100%;
   left: -28.3%;
   /* top: 14.5%; */
-  position: absolute;
-  /* position: relative; */
+  position: relative;
 }
 
 .purpleCircle,
@@ -73,11 +72,16 @@
   position: absolute;
 }
 
-img.purpleCircle {
-  left: 0;
-  top: 0;
-  width: 94.3%;
-  height: 100%;
+img.purple-circle {
+  position: fixed;
+  top: 50%;
+  left: -9%;
+  transform: translate(-0%, -50%);
+  width: 41vw;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
 }
 
 .topRightIcon {

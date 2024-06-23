@@ -1,15 +1,34 @@
+import Image from "next/image";
 import "./footer.css";
 
 const FacebookIcon = () => (
-  <img src="/icons/facebook.svg" alt="Facebook" className="icon social-icon" />
+  <Image
+    src="/icons/facebook.svg"
+    alt="Facebook"
+    width={24}
+    height={24}
+    className="icon social-icon"
+  />
 );
 
 const YoutubeIcon = () => (
-  <img src="/icons/youtube.svg" alt="YouTube" className="icon social-icon" />
+  <Image
+    src="/icons/youtube.svg"
+    alt="YouTube"
+    width={24}
+    height={24}
+    className="icon social-icon"
+  />
 );
 
 const LinkedinIcon = () => (
-  <img src="/icons/linkedin.svg" alt="LinkedIn" className="icon social-icon" />
+  <Image
+    src="/icons/linkedin.svg"
+    alt="LinkedIn"
+    width={24}
+    height={24}
+    className="icon social-icon"
+  />
 );
 
 export default function Footer() {

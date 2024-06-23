@@ -25,18 +25,6 @@ function HeroSection() {
       <h1 className="site-title">
         פלטפורמת ניתוח נתונים <br></br>להגדלת האימפקט החברתי
       </h1>
-      {/* <Image
-        src="/circle.svg"
-        alt="purple-circle"
-        width={1200}
-        height={1200}
-        className="purple-circle"
-        style={{
-          maxWidth: "100%",
-          height: "auto",
-          objectFit: "contain",
-        }}
-      /> */}
       <div className="hero-content">
         <div className="image-column">
           <div className="image-wrapper">
