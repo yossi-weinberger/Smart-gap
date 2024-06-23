@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import "./sidebar.css";
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -36,10 +37,13 @@ export default function Sidebar() {
     <nav className="container">
       <div className="logo-div">
         <Link href="/">
-          <img
+          <Image
             className="logo-sidebar"
             src="/SG-logo-modified.png"
             alt="Logo"
+            width="40"
+            height="40"
+            // layout="responsive"
           />
         </Link>
       </div>

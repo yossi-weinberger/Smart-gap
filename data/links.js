@@ -1,25 +1,74 @@
+import Image from "next/image";
 import "./links.css";
 
 const HomeIcon = () => (
-  <img src="/icons/home.svg" alt="Home" className="icon" />
+  <Image
+    src="/icons/home.svg"
+    alt="Home"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const DashboardIcon = () => (
-  <img src="/icons/graphs.svg" alt="Dashboard" className="icon" />
+  <Image
+    src="/icons/graphs.svg"
+    alt="Dashboard"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const DataIcon = () => (
-  <img src="/icons/table.svg" alt="Contact" className="icon" />
+  <Image
+    src="/icons/table.svg"
+    alt="Data"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const InfoIcon = () => (
-  <img src="/icons/info.svg" alt="About" className="icon" />
+  <Image
+    src="/icons/info.svg"
+    alt="About"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const ContactIcon = () => (
-  <img src="/icons/contact.svg" alt="Contact" className="icon" />
+  <Image
+    src="/icons/contact.svg"
+    alt="Contact"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const LoginIcon = () => (
-  <img src="/icons/login.svg" alt="Contact" className="icon" />
+  <Image
+    src="/icons/login.svg"
+    alt="Login"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
+
 const LogoutIcon = () => (
-  <img src="/icons/logout.svg" alt="Contact" className="icon" />
+  <Image
+    src="/icons/logout.svg"
+    alt="Logout"
+    width={24}
+    height={24}
+    className="icon"
+  />
 );
 
 export const links = [
@@ -38,7 +87,6 @@ export const links = [
     href: "/data",
     icon: <DataIcon />,
   },
-
   {
     title: "אודות",
     href: "/about",
