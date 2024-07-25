@@ -1,4 +1,3 @@
-// About.js
 import "./page.css";
 
 import Image from "next/image";
