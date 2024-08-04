@@ -19,14 +19,16 @@ const options = {
 
 const handler = NextAuth({
   ...options,
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const isAllowedUser = allowedUsers.includes(user.email);
-      if (isAllowedUser) {
-        return true;
-      }
-    },
-  },
+
+  // only allow authenticated users from the list
+  // callbacks: {
+  //   async signIn({ user, account, profile, email, credentials }) {
+  //     const isAllowedUser = allowedUsers.includes(user.email);
+  //     if (isAllowedUser) {
+  //       return true;
+  //     }
+  //   },
+  // },
   pages: {
     signIn: "/auth/login",
   },
