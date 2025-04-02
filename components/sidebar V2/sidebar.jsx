@@ -43,7 +43,7 @@ export default function Sidebar() {
             alt="Logo"
             width="40"
             height="40"
-            // layout="responsive"
+          // layout="responsive"
           />
         </Link>
       </div>

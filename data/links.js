@@ -11,6 +11,16 @@ const HomeIcon = () => (
   />
 );
 
+const FileIcon = () => (
+  <Image
+    src="/icons/file.svg"
+    alt="Home"
+    width={24}
+    height={24}
+    className="icon"
+  />
+);
+
 const DashboardIcon = () => (
   <Image
     src="/icons/graphs.svg"
@@ -76,6 +86,11 @@ export const links = [
     title: "בית",
     href: "/",
     icon: <HomeIcon />,
+  },
+  {
+    title: "קבצים",
+    href: "/upload-form",
+    icon: <FileIcon />,
   },
   {
     title: "דשבורד",
