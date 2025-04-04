@@ -1,5 +1,6 @@
 'use client'
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
+import './DataUploadForm.css'
 
 export default function DataUploadForm() {
 
@@ -23,12 +24,33 @@ export default function DataUploadForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="">
-            <input type="text" name="table1" placeholder="קישור לטבלת שאלות" value={tables.questionTable} onChange={handleChange} required className="" />
-            <input type="text" name="table2" placeholder="קישור לטבלת נושאים" value={tables.categoryTable} onChange={handleChange} required className="" />
-            <input type="text" name="table3" placeholder="קישור לטבלת יעדים" value={tables.goalTable} onChange={handleChange} required className="" />
-            <input type="text" name="surveyData" placeholder="הדבקת קישור לטבלת הנתונים" value={tables.surveyData} onChange={handleChange} required className="" />
-            <button type="submit" className="">Submit</button>
+        <form onSubmit={handleSubmit} className="upload-form">
+            <div className="form-header">
+                <p className="form-headline rtl-text">קבצי מפתחות</p>
+                <p className="description rtl-text">קבצי sheets לפי הוראות צוות הפיתוח של smart gap. שילוב הטבלאות מגדיר למערכת כיצד לנתח את הנתונים</p>
+            </div>
+
+            <div className="link-section">
+                <p className="form-headline rtl-text">1. טבלת שאלות</p>
+                <input className="link-input" type="text" name="questionTable" placeholder="הדבקת קישור לטבלת שאלות" value={tables.questionTable} onChange={handleChange} required />
+            </div>
+
+            <div className="link-section">
+                <p className="form-headline rtl-text">2. טבלת נושאים</p>
+                <input className="link-input" type="text" name="categoryTable" placeholder="הדבקת קישור לטבלת נושאים" value={tables.categoryTable} onChange={handleChange} required />
+            </div>
+
+            <div className="link-section">
+                <p className="form-headline rtl-text">3. טבלת יעדים</p>
+                <input className="link-input" type="text" name="goalTable" placeholder="הדבקת קישור לטבלת יעדים" value={tables.goalTable} onChange={handleChange} required />
+            </div>
+
+            <div className="link-section">
+                <p className="form-headline rtl-text">4. טבלת נתונים</p>
+                <input className="link-input" type="text" name="surveyData" placeholder="הדבקת קישור לטבלת הנתונים" value={tables.surveyData} onChange={handleChange} required />
+            </div>
+
+            <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
         </form>
     )
 

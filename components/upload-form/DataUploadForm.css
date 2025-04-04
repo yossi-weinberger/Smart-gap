@@ -1,0 +1,73 @@
+.upload-form {
+    display: grid;
+    gap: 1em;
+    justify-content: end;
+    padding: 1em;
+}
+
+.form-header .description {
+    font-size: .9rem;
+}
+
+.link-section {
+    display: grid;
+    justify-self: end;
+    width: 80%;
+}
+
+input[type="text"] {
+    height: 35px;
+    border: 2px dashed var(--input-border);
+    direction: rtl;
+    border-radius: 8px;
+    padding: 1em;
+    font-family: inherit;
+}
+
+.load-btn {
+    position: relative;
+    justify-self: end;
+    width: 250px;
+    height: 38px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+
+    letter-spacing: .5px;
+    border: none;
+    background: linear-gradient(187.08deg, rgba(15, 196, 191, 1), rgba(2, 115, 175, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    background-color: transparent;
+}
+
+.load-btn::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 100vh;
+    padding: 2px;
+    /* this creates the border thickness */
+    background: linear-gradient(187.08deg, rgba(15, 196, 191, 1), rgba(2, 115, 175, 1));
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border: none;
+    pointer-events: none;
+}

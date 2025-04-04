@@ -127,10 +127,12 @@ img.screen-image {
   transition: background-color 0.3s ease;
   white-space: nowrap;
 }
+
 .cta-button:hover {
   background: linear-gradient(341deg, #210c3f -7.4%, #4b1d8f 91.35%);
   cursor: pointer;
 }
+
 @media screen and (max-width: 767px) {
   .hero-section {
     padding-right: 0;
@@ -203,10 +205,6 @@ img.screen-image {
     align-items: flex-end;
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .feature {
-    /* justify-content: flex-end; */
   }
 
   .cta-button {
