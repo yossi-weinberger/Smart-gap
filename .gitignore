@@ -13,6 +13,9 @@
 /.next/
 /out/
 
+# credentials
+/credentials
+
 # production
 /build
 
