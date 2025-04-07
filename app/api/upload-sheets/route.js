@@ -95,8 +95,6 @@ export async function POST(req, res) {
             { name: 'category_ids', type: 'STRING', mode: 'REPEATED' }
         ])
 
-        console.log(JSON.stringify(questionData, null, 2))
-
         try {
             await bigquery.dataset(datasetId).table('questions').insert(questionData)
             await bigquery.dataset(datasetId).table('categories').insert(categoryData)
@@ -107,40 +105,50 @@ export async function POST(req, res) {
             return NextResponse.json({ error: 'Cannot insert data' }, { status: 500 })
         }
 
+        const categoriesTable = `${datasetId}.categories`
+        const goalsTable = `${datasetId}.goals`
+
         const [rows] = await bigquery.query({
             query: `
-           WITH category_question AS (
+           WITH category_expanded AS (
             SELECT
+                category_id,
+                category_name,
+                question_id
+       FROM
+        \`${categoriesTable}\`,
+        UNNEST(question_ids) AS question_id
+            ),
+
+            goal_expanded AS (
+            SELECT
+                g.goal_id,
+                g.goal_name,
                 c.category_id,
                 c.category_name,
-                STRING_AGG(q.question_id ORDER BY q.question_id) AS question_ids
+                c.question_id
             FROM
-                ${process.env.GCP_PROJECT_ID}.${datasetId}.categories c
-            JOIN
-                ${process.env.GCP_PROJECT_ID}.${datasetId}.questions q
-                ON c.category_id = q.category_id
-            GROUP BY
-                c.category_id, c.category_name
+        \`${goalsTable}\` g,
+                UNNEST(g.category_ids) AS category_id
+            JOIN category_expanded c
+                USING (category_id)
             )
 
             SELECT
-            g.goal_id,
-            g.goal_name,
-            cq.category_id,
-            cq.category_name,
-            cq.question_ids
+            goal_name AS goal,
+            goal_id,
+            category_name AS category,
+            category_id,
+            STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
             FROM
-            ${process.env.GCP_PROJECT_ID}.${datasetId}.goals g
-            JOIN
-            category_question cq
-            ON g.goal_id = cq.category_id  -- Fixing this line: you need to join goal_id and category_id if that's the relationship
+            goal_expanded
+            GROUP BY
+            goal, goal_id, category, category_id
             ORDER BY
-            g.goal_id;
+            goal_id, category_id;
         `,
             location: 'EU',
         })
-
-        console.log('Query executed, rows:', rows)
 
         return NextResponse.json(rows)
 

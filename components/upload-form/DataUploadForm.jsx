@@ -69,11 +69,13 @@ export default function DataUploadForm() {
                 <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
             </form>
 
-            {data && data.preview?.map(row => (
-                <tr key={row.question_id}>
-                    <td>{row.question_text}</td>
-                    <td>{row.category}</td>
+            {data && data.map((row, i) => (
+                <tr key={i}>
                     <td>{row.goal}</td>
+                    <td>{row.goal_id}</td>
+                    <td>{row.category}</td>
+                    <td>{row.category_id}</td>
+                    <td>{row.question_ids}</td>
                 </tr>
             ))}
         </>
