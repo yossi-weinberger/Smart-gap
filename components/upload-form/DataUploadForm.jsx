@@ -1,6 +1,7 @@
 'use client'
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 import './DataUploadForm.css'
+import DataPreview from '../data-preview/DataPreview'
 
 export default function DataUploadForm() {
 
@@ -69,15 +70,7 @@ export default function DataUploadForm() {
                 <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
             </form>
 
-            {data && data.map((row, i) => (
-                <tr key={i}>
-                    <td>{row.goal}</td>
-                    <td>{row.goal_id}</td>
-                    <td>{row.category}</td>
-                    <td>{row.category_id}</td>
-                    <td>{row.question_ids}</td>
-                </tr>
-            ))}
+            {data && <DataPreview data={data} />}
         </>
     )
 

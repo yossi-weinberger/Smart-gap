@@ -1,0 +1,11 @@
+.data-preview {
+    background-color: var(--light-bg-color);
+    border: 1px solid var(--table-border);
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid var(--table-border);
+    padding: 8px;
+}
