@@ -35,12 +35,14 @@ export async function POST(req, res) {
                 range: 'A1:Z1000',
             })
 
+            console.log('response.data.values', response.data.values)
             const [headers, ...rows] = response.data.values
             return rows.map(row => {
                 const obj = {}
                 headers.forEach((header, i) => {
                     obj[header] = row[i] || ''
                 })
+
                 return obj
             })
         }
@@ -58,6 +60,8 @@ export async function POST(req, res) {
                 ? goal.category_ids.split(',').map(id => id.trim())
                 : [],
         }))
+
+        const dataFromSurvey = await getSheetData(surveyData)
 
         const bigquery = new BigQuery({
             keyFilename: keyFilePath,
@@ -95,10 +99,24 @@ export async function POST(req, res) {
             { name: 'category_ids', type: 'STRING', mode: 'REPEATED' }
         ])
 
+        await ensureTableExists(datasetId, 'survey_responses', [
+            { name: 'data', type: 'STRING' }
+        ])
+
+
+        const transformedRows = dataFromSurvey.map(entry => {
+            const { ...rest } = entry
+
+            return {
+                data: JSON.stringify(rest)
+            }
+        })
+
         try {
             await bigquery.dataset(datasetId).table('questions').insert(questionData)
             await bigquery.dataset(datasetId).table('categories').insert(categoryData)
             await bigquery.dataset(datasetId).table('goals').insert(goalData)
+            await bigquery.dataset(datasetId).table('survey_responses').insert(transformedRows)
 
         } catch (err) {
             console.error('Cannot insert data:', err)

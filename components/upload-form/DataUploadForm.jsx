@@ -2,27 +2,33 @@
 import React, { useEffect, useState } from 'react'
 import './DataUploadForm.css'
 import DataPreview from '../data-preview/DataPreview'
+import Loading from '../loading/loading'
+import KeyTables from '../key-tables/KeyTables'
+import SurveyData from '../survey-data/surveyData'
 
 export default function DataUploadForm() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [tables, setTables] = useState({
         questionTable: "",
         categoryTable: "",
         goalTable: "",
-        surveyData: "",
+        surveyData: ""
     })
+    // const [surveyData, setSurveyData] = useState('')
 
     const [data, setData] = useState(null)
 
     const handleChange = (e) => {
-        const table = e.target.name
+        const dataSource = e.target.name
         const link = e.target.value
-        setTables({ ...tables, [table]: link })
+        // if (dataSource === 'surveyData') setSurveyData(link)
+        setTables({ ...tables, [dataSource]: link })
     }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
         const res = await fetch('/api/upload-sheets', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -30,47 +36,35 @@ export default function DataUploadForm() {
                 questionTable: tables.questionTable,
                 categoryTable: tables.categoryTable,
                 goalTable: tables.goalTable,
-                surveyData: tables.surveyData
+                surveyData: tables.surveyData,
             })
         })
         const data = await res.json()
         console.log('Data from backend:', data)
         setData(data)
+        setIsLoading(false)
         // onSubmit(data)
+    }
+
+    if (data) {
+        return <DataPreview data={data} />
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="upload-form">
-                <div className="form-header">
-                    <p className="form-headline rtl-text">קבצי מפתחות</p>
-                    <p className="description rtl-text">קבצי sheets לפי הוראות צוות הפיתוח של smart gap. שילוב הטבלאות מגדיר למערכת כיצד לנתח את הנתונים</p>
-                </div>
+            {(isLoading) ? <Loading /> :
+                <form onSubmit={handleSubmit} className="upload-form">
+                    <div>
+                        <KeyTables tables={tables} handleChange={handleChange} />
+                        <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
+                    </div>
 
-                <div className="link-section">
-                    <p className="form-headline rtl-text">1. טבלת שאלות</p>
-                    <input className="link-input" type="text" name="questionTable" placeholder="הדבקת קישור לטבלת שאלות" value={tables.questionTable} onChange={handleChange} required />
-                </div>
-
-                <div className="link-section">
-                    <p className="form-headline rtl-text">2. טבלת נושאים</p>
-                    <input className="link-input" type="text" name="categoryTable" placeholder="הדבקת קישור לטבלת נושאים" value={tables.categoryTable} onChange={handleChange} required />
-                </div>
-
-                <div className="link-section">
-                    <p className="form-headline rtl-text">3. טבלת יעדים</p>
-                    <input className="link-input" type="text" name="goalTable" placeholder="הדבקת קישור לטבלת יעדים" value={tables.goalTable} onChange={handleChange} required />
-                </div>
-
-                <div className="link-section">
-                    <p className="form-headline rtl-text">4. טבלת נתונים</p>
-                    <input className="link-input" type="text" name="surveyData" placeholder="הדבקת קישור לטבלת הנתונים" value={tables.surveyData} onChange={handleChange} required />
-                </div>
-
-                <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
-            </form>
-
-            {data && <DataPreview data={data} />}
+                    <div>
+                        <SurveyData surveyData={tables.surveyData} handleChange={handleChange} />
+                        <button type="button" className="btn load-btn"><span>טעינת הקובץ</span></button>
+                    </div>
+                </form>
+            }
         </>
     )
 
