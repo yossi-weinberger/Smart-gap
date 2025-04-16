@@ -9,7 +9,7 @@ import fs from 'fs'
 export async function POST(req, res) {
     try {
         const body = await req.json()
-        const { questionTable, categoryTable, goalTable, surveyData } = body
+        const { surveyData } = body
 
         const keyFilePath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
@@ -24,19 +24,7 @@ export async function POST(req, res) {
 
         const sheets = google.sheets({ version: 'v4', auth })
 
-        const questionData = await getSheetDataFromUrl(questionTable, sheets)
-        const categoryData = (await getSheetDataFromUrl(categoryTable, sheets)).map(category => ({
-            ...category,
-            question_ids: category.question_ids
-                ? category.question_ids.split(',').map(id => id.trim())
-                : [],
-        }))
-        const goalData = (await getSheetDataFromUrl(goalTable, sheets)).map(goal => ({
-            ...goal,
-            category_ids: goal.category_ids
-                ? goal.category_ids.split(',').map(id => id.trim())
-                : [],
-        }))
+        const dataFromSurvey = await getSheetDataFromUrl(surveyData, sheets)
 
         const bigquery = new BigQuery({
             keyFilename: keyFilePath,
@@ -45,31 +33,25 @@ export async function POST(req, res) {
 
         const datasetId = 'smartgap_dataset'
 
-        await ensureTableExists(bigquery, 'smartgap_dataset', 'questions', [
-            { name: 'question_id', type: 'STRING' },
-            { name: 'question_name', type: 'STRING' }
+        await ensureTableExists(bigquery, datasetId, 'survey_responses', [
+            { name: 'data', type: 'STRING' }
         ])
 
-        await ensureTableExists(bigquery, 'smartgap_dataset', 'categories', [
-            { name: 'category_id', type: 'STRING' },
-            { name: 'category_name', type: 'STRING' },
-            { name: 'question_ids', type: 'STRING', mode: 'REPEATED' }
-        ])
 
-        await ensureTableExists(bigquery, 'smartgap_dataset', 'goals', [
-            { name: 'goal_id', type: 'STRING' },
-            { name: 'goal_name', type: 'STRING' },
-            { name: 'category_ids', type: 'STRING', mode: 'REPEATED' }
-        ])
+        const transformedRows = dataFromSurvey.map(entry => {
+            const { ...rest } = entry
+
+            return {
+                data: JSON.stringify(rest)
+            }
+        })
 
         try {
-            await bigquery.dataset(datasetId).table('questions').insert(questionData)
-            await bigquery.dataset(datasetId).table('categories').insert(categoryData)
-            await bigquery.dataset(datasetId).table('goals').insert(goalData)
+            await bigquery.dataset(datasetId).table('survey_responses').insert(transformedRows)
 
         } catch (err) {
             console.error('Cannot insert data:', err)
-            return NextResponse.json({ error: 'Cannot insert data' }, { status: 500 })
+            return NextResponse.json({ error: 'Cannot insert survey data' }, { status: 500 })
         }
 
         const categoriesTable = `${datasetId}.categories`
