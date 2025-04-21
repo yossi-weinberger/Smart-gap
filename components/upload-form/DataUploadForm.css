@@ -1,6 +1,6 @@
 .upload-form {
     display: grid;
-    gap: 1em;
+    gap: 2em;
     justify-content: end;
     padding: 1em;
 }
@@ -13,6 +13,18 @@
     display: grid;
     justify-self: end;
     width: 80%;
+}
+
+.tables-section {
+    display: grid;
+    gap: 1em;
+}
+
+.survey-data-section {
+    display: flex;
+    gap: 1em;
+    flex-direction: row-reverse;
+    align-items: end;
 }
 
 input[type="text"] {

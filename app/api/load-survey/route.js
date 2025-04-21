@@ -57,49 +57,49 @@ export async function POST(req, res) {
         const categoriesTable = `${datasetId}.categories`
         const goalsTable = `${datasetId}.goals`
 
-        const [rows] = await bigquery.query({
-            query: `
-           WITH category_expanded AS (
-            SELECT
-                category_id,
-                category_name,
-                question_id
-       FROM
-        \`${categoriesTable}\`,
-        UNNEST(question_ids) AS question_id
-            ),
+        //     const [rows] = await bigquery.query({
+        //         query: `
+        //        WITH category_expanded AS (
+        //         SELECT
+        //             category_id,
+        //             category_name,
+        //             question_id
+        //    FROM
+        //     \`${categoriesTable}\`,
+        //     UNNEST(question_ids) AS question_id
+        //         ),
 
-            goal_expanded AS (
-            SELECT
-                g.goal_id,
-                g.goal_name,
-                c.category_id,
-                c.category_name,
-                c.question_id
-            FROM
-        \`${goalsTable}\` g,
-                UNNEST(g.category_ids) AS category_id
-            JOIN category_expanded c
-                USING (category_id)
-            )
+        //         goal_expanded AS (
+        //         SELECT
+        //             g.goal_id,
+        //             g.goal_name,
+        //             c.category_id,
+        //             c.category_name,
+        //             c.question_id
+        //         FROM
+        //     \`${goalsTable}\` g,
+        //             UNNEST(g.category_ids) AS category_id
+        //         JOIN category_expanded c
+        //             USING (category_id)
+        //         )
 
-            SELECT
-            goal_name AS goal,
-            goal_id,
-            category_name AS category,
-            category_id,
-            STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
-            FROM
-            goal_expanded
-            GROUP BY
-            goal, goal_id, category, category_id
-            ORDER BY
-            goal_id, category_id;
-        `,
-            location: 'EU',
-        })
+        //         SELECT
+        //         goal_name AS goal,
+        //         goal_id,
+        //         category_name AS category,
+        //         category_id,
+        //         STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
+        //         FROM
+        //         goal_expanded
+        //         GROUP BY
+        //         goal, goal_id, category, category_id
+        //         ORDER BY
+        //         goal_id, category_id;
+        //     `,
+        //         location: 'EU',
+        //     })
 
-        return NextResponse.json(rows)
+        return NextResponse.json({ status: 'הקובץ נטען בהצלחה' })
 
     } catch (err) {
         console.error('Error reading sheets:', err)

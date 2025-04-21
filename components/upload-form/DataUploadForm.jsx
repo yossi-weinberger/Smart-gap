@@ -17,7 +17,9 @@ export default function DataUploadForm() {
     })
     // const [surveyData, setSurveyData] = useState('')
 
-    const [data, setData] = useState(null)
+    const [combinedData, setCombinedData] = useState(null)
+    const [surveyDataLoadingStatus, setSurveyDataLoadingStatus] = useState(null)
+    const [dataAnalysisStatus, setDataAnalysisStatus] = useState(null)
 
     const handleChange = (e) => {
         const dataSource = e.target.name
@@ -41,30 +43,52 @@ export default function DataUploadForm() {
         })
         const data = await res.json()
         console.log('Data from backend:', data)
-        setData(data)
+        setCombinedData(data)
         setIsLoading(false)
-        // onSubmit(data)
     }
 
-    if (data) {
-        return <DataPreview data={data} />
+    const handleSubmitSurveyData = async (e) => {
+        e.preventDefault()
+        // setIsLoading(true)
+        const res = await fetch('/api/load-survey', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                surveyData: tables.surveyData,
+            })
+        })
+        const status = await res.json()
+        console.log('Data from backend:', status)
+        setSurveyDataLoadingStatus(status)
+        // setIsLoading(false)
+    }
+
+    const analyzeData = async (e) => {
+        e.preventDefault()
+        const res = await fetch('/api/calculate-goal-average', {
+            method: 'POST',
+        })
+        const status = await res.json()
+        console.log('Data from backend:', status)
+        setDataAnalysisStatus(status)
     }
 
     return (
         <>
-            {(isLoading) ? <Loading /> :
-                <form onSubmit={handleSubmit} className="upload-form">
-                    <div>
+            <form onSubmit={handleSubmit} className="upload-form">
+                {combinedData ? <DataPreview data={combinedData} /> :
+                    <div className="tables-section">
                         <KeyTables tables={tables} handleChange={handleChange} />
                         <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
-                    </div>
+                    </div>}
 
-                    <div>
-                        <SurveyData surveyData={tables.surveyData} handleChange={handleChange} />
-                        <button type="button" className="btn load-btn"><span>טעינת הקובץ</span></button>
-                    </div>
-                </form>
-            }
+                <div className="survey-data-section">
+                    <SurveyData surveyData={tables.surveyData} handleChange={handleChange} surveyDataLoadingStatus={surveyDataLoadingStatus} />
+                    <button type="button" className="btn load-btn" onClick={handleSubmitSurveyData}><span>טעינת הקובץ</span></button>
+                </div>
+
+                {combinedData && surveyDataLoadingStatus && (<button className="btn load-btn" onClick={analyzeData}>ביצוע ניתוח נתונים</button>)}
+            </form>
         </>
     )
 
