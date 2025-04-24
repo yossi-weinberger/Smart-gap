@@ -65,7 +65,7 @@ export default function DataUploadForm() {
 
     const analyzeData = async (e) => {
         e.preventDefault()
-        const res = await fetch('/api/calculate-goal-average', {
+        const res = await fetch('/api/calculate-goal-averages', {
             method: 'POST',
         })
         const status = await res.json()
@@ -76,15 +76,14 @@ export default function DataUploadForm() {
     return (
         <>
             <form onSubmit={handleSubmit} className="upload-form">
-                {combinedData ? <DataPreview data={combinedData} /> :
-                    <div className="tables-section">
-                        <KeyTables tables={tables} handleChange={handleChange} />
-                        <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>
-                    </div>}
+                <div className="tables-section">
+                    <KeyTables tables={tables} handleChange={handleChange} data={combinedData} />
+                    {!combinedData && <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>}
+                </div>
 
                 <div className="survey-data-section">
                     <SurveyData surveyData={tables.surveyData} handleChange={handleChange} surveyDataLoadingStatus={surveyDataLoadingStatus} />
-                    <button type="button" className="btn load-btn" onClick={handleSubmitSurveyData}><span>טעינת הקובץ</span></button>
+                    {!surveyDataLoadingStatus && <button type="button" className="btn load-btn" onClick={handleSubmitSurveyData}><span>טעינת הקובץ</span></button>}
                 </div>
 
                 {combinedData && surveyDataLoadingStatus && (<button className="btn load-btn" onClick={analyzeData}>ביצוע ניתוח נתונים</button>)}
