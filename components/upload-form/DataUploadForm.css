@@ -1,8 +1,23 @@
+.files {
+    position: relative;
+    padding: 2em;
+    background: var(--secondary-background-color);
+    height: 100%;
+}
+
+.folder-shape {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    height: auto;
+}
+
 .upload-form {
     display: grid;
     gap: 2em;
-    justify-content: end;
-    padding: 1em;
+    justify-content: start;
+    padding: 3em 2em;
 }
 
 .form-header .description {
@@ -11,7 +26,6 @@
 
 .link-section {
     display: grid;
-    justify-self: end;
     width: 80%;
 }
 
@@ -23,8 +37,7 @@
 .survey-data-section {
     display: flex;
     gap: 1em;
-    flex-direction: row-reverse;
-    align-items: end;
+    align-items: flex-end;
 }
 
 input[type="text"] {
@@ -38,7 +51,6 @@ input[type="text"] {
 
 .load-btn {
     position: relative;
-    justify-self: end;
     width: 250px;
     height: 38px;
     padding: 10px;

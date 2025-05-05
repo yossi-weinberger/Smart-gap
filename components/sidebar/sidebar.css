@@ -33,13 +33,13 @@ img.logo-sidebar {
   /* transition: transform 0.3s ease; */
   transition: transform 0.3s ease, ter 0.3s ease;
 }
+
 .logo-div {
   margin: 20px;
 }
 
 img.logo-sidebar:hover {
-  filter: brightness(1.2) contrast(1.2) saturate(1.5)
-    drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
+  filter: brightness(1.2) contrast(1.2) saturate(1.5) drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.3));
   transition: filter 0.3s ease;
 }
 
@@ -53,7 +53,8 @@ img.logo-sidebar:hover {
 }
 
 .list-item {
-  margin-bottom: 40px; /* Add margin to create space between icons */
+  margin-bottom: 40px;
+  /* Add margin to create space between icons */
 }
 
 .link {

@@ -5,7 +5,7 @@ export default function KeyTables({ tables, handleChange, data }) {
     return (
         <>
             <div className="form-header">
-                <p className="form-headline rtl-text">קבצי מפתחות</p>
+                <h3 className="form-headline rtl-text">קבצי מפתחות</h3>
                 {
                     data ?
                         <p className="description rtl-text">קליטת המערכת לקבצי המפתחות</p> :
