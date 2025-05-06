@@ -115,20 +115,38 @@ export async function POST(req, res) {
                 UNNEST(g.category_ids) AS category_id
             JOIN category_expanded c
                 USING (category_id)
-            )
+            ),
+            
+            objective_expanded AS (
+                SELECT
+                    o.objective_id,
+                    o.objective_name,
+                    g.goal_id,
+                    g.goal_name,
+                    g.category_id,
+                    g.category_name,
+                    g.question_id
+                FROM
+                    \`${objectivesTable}\` o,
+                    UNNEST(o.goal_ids) AS goal_id
+                JOIN goal_expanded g
+                    USING (goal_id)
+                )
 
-            SELECT
-            goal_name AS goal,
-            goal_id,
-            category_name AS category,
-            category_id,
-            STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
-            FROM
-            goal_expanded
-            GROUP BY
-            goal, goal_id, category, category_id
-            ORDER BY
-            goal_id, category_id;
+                SELECT
+                objective_name AS objective,
+                objective_id,
+                goal_name AS goal,
+                goal_id,
+                category_name AS category,
+                category_id,
+                STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
+                FROM
+                objective_expanded
+                GROUP BY
+                objective, objective_id, goal, goal_id, category, category_id
+                ORDER BY
+                objective_id, goal_id, category_id;
         `,
             location: 'EU',
         })
