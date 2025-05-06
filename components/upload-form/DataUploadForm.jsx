@@ -13,6 +13,7 @@ export default function DataUploadForm() {
         questionTable: "",
         categoryTable: "",
         goalTable: "",
+        objectiveTable: "",
         surveyData: ""
     })
     // const [surveyData, setSurveyData] = useState('')
@@ -38,6 +39,7 @@ export default function DataUploadForm() {
                 questionTable: tables.questionTable,
                 categoryTable: tables.categoryTable,
                 goalTable: tables.goalTable,
+                objectiveTable: tables.objectiveTable,
                 surveyData: tables.surveyData,
             })
         })

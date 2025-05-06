@@ -9,7 +9,7 @@ import fs from 'fs'
 export async function POST(req, res) {
     try {
         const body = await req.json()
-        const { questionTable, categoryTable, goalTable, surveyData } = body
+        const { questionTable, categoryTable, goalTable, objectiveTable, surveyData } = body
 
         const keyFilePath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
@@ -37,6 +37,14 @@ export async function POST(req, res) {
                 ? goal.category_ids.split(',').map(id => id.trim())
                 : [],
         }))
+        const objectiveData = (await getSheetDataFromUrl(objectiveTable, sheets)).map(objective => ({
+            ...objective,
+            goal_ids: objective.goal_ids
+                ? objective.goal_ids.split(',').map(id => id.trim())
+                : [],
+        }))
+        console.log('goalData', goalData)
+        console.log('objectiveData', objectiveData)
 
         const bigquery = new BigQuery({
             keyFilename: keyFilePath,
@@ -62,10 +70,17 @@ export async function POST(req, res) {
             { name: 'category_ids', type: 'STRING', mode: 'REPEATED' }
         ])
 
+        await ensureTableExists(bigquery, 'smartgap_dataset', 'objectives', [
+            { name: 'objective_id', type: 'STRING' },
+            { name: 'objective_name', type: 'STRING' },
+            { name: 'goal_ids', type: 'STRING', mode: 'REPEATED' }
+        ])
+
         try {
             await bigquery.dataset(datasetId).table('questions').insert(questionData)
             await bigquery.dataset(datasetId).table('categories').insert(categoryData)
             await bigquery.dataset(datasetId).table('goals').insert(goalData)
+            await bigquery.dataset(datasetId).table('objectives').insert(objectiveData)
 
         } catch (err) {
             console.error('Cannot insert data:', err)
@@ -74,6 +89,7 @@ export async function POST(req, res) {
 
         const categoriesTable = `${datasetId}.categories`
         const goalsTable = `${datasetId}.goals`
+        const objectivesTable = `${datasetId}.objectives`
 
         const [rows] = await bigquery.query({
             query: `

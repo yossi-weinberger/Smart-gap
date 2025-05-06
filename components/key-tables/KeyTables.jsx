@@ -29,6 +29,11 @@ export default function KeyTables({ tables, handleChange, data }) {
                         <p className="form-headline rtl-text">3. טבלת יעדים</p>
                         <input className="link-input" type="text" name="goalTable" placeholder="הדבקת קישור לטבלת יעדים" value={tables.goalTable} onChange={handleChange} required />
                     </div>
+
+                    <div className="link-section">
+                        <p className="form-headline rtl-text">4. טבלת מטרות</p>
+                        <input className="link-input" type="text" name="objectiveTable" placeholder="הדבקת קישור לטבלת מטרות" value={tables.objectiveTable} onChange={handleChange} required />
+                    </div>
                 </>}
         </>
     )
