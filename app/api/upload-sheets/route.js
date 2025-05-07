@@ -43,8 +43,6 @@ export async function POST(req, res) {
                 ? objective.goal_ids.split(',').map(id => id.trim())
                 : [],
         }))
-        console.log('goalData', goalData)
-        console.log('objectiveData', objectiveData)
 
         const bigquery = new BigQuery({
             keyFilename: keyFilePath,
@@ -116,7 +114,7 @@ export async function POST(req, res) {
             JOIN category_expanded c
                 USING (category_id)
             ),
-            
+
             objective_expanded AS (
                 SELECT
                     o.objective_id,
