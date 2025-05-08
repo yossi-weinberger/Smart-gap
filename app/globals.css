@@ -164,6 +164,13 @@ h3 {
   }
 }
 
+p {
+  &.re-loading {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
 .rtl-text {
   direction: rtl;
   unicode-bidi: plaintext;

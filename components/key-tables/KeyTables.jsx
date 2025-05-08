@@ -1,6 +1,6 @@
 import DataPreview from "../data-preview/DataPreview"
 
-export default function KeyTables({ tables, handleChange, data }) {
+export default function KeyTables({ tables, handleChange, data, setData }) {
 
     return (
         <>
@@ -13,7 +13,7 @@ export default function KeyTables({ tables, handleChange, data }) {
                 }
             </div>
 
-            {data ? <DataPreview data={data} /> :
+            {data ? <DataPreview data={data} setData={setData} /> :
                 <>
                     <div className="link-section">
                         <p className="form-headline rtl-text">1. טבלת שאלות</p>

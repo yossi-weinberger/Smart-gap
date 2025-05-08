@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './DataUploadForm.css'
 import KeyTables from '../key-tables/KeyTables'
 import SurveyData from '../survey-data/surveyData'
-import axios from 'axios'
+import { dataService } from '@/services/dataService'
 
 export default function DataUploadForm() {
 
@@ -44,13 +44,7 @@ export default function DataUploadForm() {
                 },
             }
 
-            const response = await axios.post('/api/upload-sheets', {
-                questionTable: tables.questionTable,
-                categoryTable: tables.categoryTable,
-                goalTable: tables.goalTable,
-                objectiveTable: tables.objectiveTable,
-                surveyData: tables.surveyData,
-            }, config);
+            const response = await dataService.uploadFiles(tables, config)
 
             setProgress(90);
             setTimeout(() => {
@@ -69,27 +63,28 @@ export default function DataUploadForm() {
     const handleSubmitSurveyData = async (e) => {
         e.preventDefault()
         // setIsLoading(true)
-        const res = await fetch('/api/load-survey', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                surveyData: tables.surveyData,
-            })
-        })
-        const status = await res.json()
-        console.log('Data from backend:', status)
-        setSurveyDataLoadingStatus(status)
+        try {
+            const res = await dataService.uploadSurveyData({ surveyData: tables.surveyData })
+            const status = await res.json()
+            console.log('Data from backend:', status)
+            setSurveyDataLoadingStatus(status)
+        } catch (error) {
+            console.error('Survey data upload failed:', error)
+        }
         // setIsLoading(false)
     }
 
     const analyzeData = async (e) => {
         e.preventDefault()
-        const res = await fetch('/api/calculate-goal-averages', {
-            method: 'POST',
-        })
-        const status = await res.json()
-        console.log('Data from backend:', status)
-        setDataAnalysisStatus(status)
+
+        try {
+            const res = await dataService.analyzeData()
+            const status = await res.json()
+            console.log('Data from backend:', status)
+            setDataAnalysisStatus(status)
+        } catch (error) {
+            console.error('Can not analyze data:', error)
+        }
     }
 
     return (
@@ -103,7 +98,7 @@ export default function DataUploadForm() {
 
                 <form onSubmit={handleSubmit} className="upload-form">
                     <div className="tables-section">
-                        <KeyTables tables={tables} handleChange={handleChange} data={combinedData} />
+                        <KeyTables tables={tables} handleChange={handleChange} data={combinedData} setData={setCombinedData} />
                         {!combinedData && <button type="submit" className="btn load-btn"><span>טעינת קבצי מפתחות</span></button>}
                     </div>
 

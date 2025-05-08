@@ -1,29 +1,33 @@
 import './DataPreview.css'
-export default function DataPreview({ data }) {
+export default function DataPreview({ data, setData }) {
 
     const tableHeadlines = ['מטרות', 'מפתח מטרות', 'יעדים', 'מפתח יעדים', 'נושאים', 'מפתח נושאים', 'מפתח שאלות']
     return (
-        <table className="data-preview">
-            <thead>
-                <tr>
-                    {
-                        [...tableHeadlines].map((headline, i) => <th key={i}>{headline}</th>)
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                {data.map(row =>
-                    <tr key={row.category_id}>
-                        <td>{row.objective}</td>
-                        <td>{row.objective_id}</td>
-                        <td>{row.goal}</td>
-                        <td>{row.goal_id}</td>
-                        <td>{row.category}</td>
-                        <td>{row.category_id}</td>
-                        <td>{row.question_ids}</td>
+        <>
+            <table className="data-preview">
+                <thead>
+                    <tr>
+                        {
+                            [...tableHeadlines].map((headline, i) => <th key={i}>{headline}</th>)
+                        }
                     </tr>
-                )}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {data.map(row =>
+                        <tr key={row.category_id}>
+                            <td>{row.objective}</td>
+                            <td>{row.objective_id}</td>
+                            <td>{row.goal}</td>
+                            <td>{row.goal_id}</td>
+                            <td>{row.category}</td>
+                            <td>{row.category_id}</td>
+                            <td>{row.question_ids}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+
+            <p className="re-loading" onClick={() => setData(null)}>טעינת קבצים מחדש</p>
+        </>
     )
 }
