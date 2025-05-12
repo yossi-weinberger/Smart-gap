@@ -10,14 +10,9 @@ const uploadFiles = async (tables, config) => {
     }
 }
 
-const uploadSurveyData = async (surveyData) => {
-    const res = await fetch('/api/load-survey', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...surveyData })
-    })
-
-    return res
+const uploadSurveyData = async (surveyData, config) => {
+    const response = await axios.post('/api/load-survey', { ...surveyData }, config)
+    return response
 }
 
 const analyzeData = async () => {

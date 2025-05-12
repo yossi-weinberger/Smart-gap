@@ -9,7 +9,7 @@ import fs from 'fs'
 export async function POST(req, res) {
     try {
         const body = await req.json()
-        const { questionTable, categoryTable, goalTable, objectiveTable, surveyData } = body
+        const { questionTable, categoryTable, goalTable, objectiveTable } = body
 
         const keyFilePath = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 

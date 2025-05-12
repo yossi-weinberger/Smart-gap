@@ -1,6 +1,6 @@
 import DataPreview from "../data-preview/DataPreview"
 
-export default function KeyTables({ tables, handleChange, data, setData }) {
+export default function KeyTables({ tables, handleChange, data, clearTablesForm }) {
 
     const linkInputs = [
         {
@@ -40,7 +40,7 @@ export default function KeyTables({ tables, handleChange, data, setData }) {
                 }
             </div>
 
-            {data ? <DataPreview data={data} setData={setData} /> :
+            {data ? <DataPreview data={data} clearTablesForm={clearTablesForm} /> :
 
                 linkInputs.map((item, i) =>
                     <div className="link-section" key={i}>

@@ -1,5 +1,5 @@
 import './DataPreview.css'
-export default function DataPreview({ data, setData }) {
+export default function DataPreview({ data, clearTablesForm }) {
 
     const tableHeadlines = ['מטרות', 'מפתח מטרות', 'יעדים', 'מפתח יעדים', 'נושאים', 'מפתח נושאים', 'מפתח שאלות']
     const [objective, objectiveId, goal, goalId, category, categoryId, questions] = data
@@ -29,7 +29,7 @@ export default function DataPreview({ data, setData }) {
                 </tbody>
             </table>
 
-            <p className="re-loading" onClick={() => setData(null)}>טעינת קבצים מחדש</p>
+            <p className="re-loading" onClick={clearTablesForm}>טעינת קבצים מחדש</p>
         </>
     )
 }

@@ -173,6 +173,10 @@ p {
   &.description {
     margin-block-end: .5em;
   }
+
+  .loader-bar & {
+    margin-block-start: .5em;
+  }
 }
 
 .rtl-text {
