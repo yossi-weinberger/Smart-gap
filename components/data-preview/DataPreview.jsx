@@ -2,6 +2,8 @@ import './DataPreview.css'
 export default function DataPreview({ data, setData }) {
 
     const tableHeadlines = ['מטרות', 'מפתח מטרות', 'יעדים', 'מפתח יעדים', 'נושאים', 'מפתח נושאים', 'מפתח שאלות']
+    const [objective, objectiveId, goal, goalId, category, categoryId, questions] = data
+
     return (
         <>
             <table className="data-preview">

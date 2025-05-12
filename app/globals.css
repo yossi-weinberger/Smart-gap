@@ -169,6 +169,10 @@ p {
     text-decoration: underline;
     cursor: pointer;
   }
+
+  &.description {
+    margin-block-end: .5em;
+  }
 }
 
 .rtl-text {
