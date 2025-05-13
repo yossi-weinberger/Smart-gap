@@ -99,7 +99,7 @@ export async function POST(req, res) {
         //         location: 'EU',
         //     })
 
-        return NextResponse.json({ status: 'הקובץ נטען בהצלחה' })
+        return NextResponse.json({ status: 'הקובץ הועלה בהצלחה' })
 
     } catch (err) {
         console.error('Error reading sheets:', err)

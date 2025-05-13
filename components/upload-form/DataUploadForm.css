@@ -18,7 +18,7 @@
     display: grid;
     gap: 2em;
     justify-content: start;
-    padding: 3em 2em;
+    padding: 3em 2em 2em;
 }
 
 .form-header .description {
@@ -27,19 +27,15 @@
 
 .link-section {
     display: grid;
+}
+
+.link-input {
     width: 80%;
 }
 
 .tables-section {
     display: grid;
     gap: 1em;
-}
-
-.survey-data-section {
-    display: flex;
-    gap: 1em;
-    align-items: flex-end;
-    width: 600px;
 }
 
 input[type="text"] {
@@ -49,6 +45,10 @@ input[type="text"] {
     border-radius: 8px;
     padding: 1em;
     font-family: inherit;
+}
+
+.analyze-data-btn-container {
+    padding: 2em 2em 0;
 }
 
 .load-btn {

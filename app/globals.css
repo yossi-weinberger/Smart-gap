@@ -181,7 +181,7 @@ p {
   }
 
   &.upload-indicator {
-    padding: .5em;
+    padding: .5em 1em;
     border: 1px solid var(--input-border);
     border-radius: 8px;
 

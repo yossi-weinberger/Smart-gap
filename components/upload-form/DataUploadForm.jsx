@@ -1,10 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './DataUploadForm.css'
 import KeyTables from '../key-tables/KeyTables'
 import SurveyData from '../survey-data/SurveyData'
 import { dataService } from '@/services/dataService'
-import { LoaderBar } from '../loader-bar/LoaderBar'
 
 export default function DataUploadForm() {
 
@@ -145,7 +144,10 @@ export default function DataUploadForm() {
                     isLoadingSurveyData={isLoadingSurveyData}
                 />
 
-                {combinedData && surveyDataLoadingStatus && (<button className="btn load-btn analyze-data-btn" onClick={analyzeData}>ביצוע ניתוח נתונים</button>)}
+                {combinedData && surveyDataLoadingStatus && (
+                    <div className="analyze-data-btn-container">
+                        <button className="btn load-btn analyze-data-btn" onClick={analyzeData}>ביצוע ניתוח נתונים</button>
+                    </div>)}
             </div>
         </section>
     )
