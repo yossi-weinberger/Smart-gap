@@ -1,28 +1,60 @@
 import './DataPreview.css'
 export default function DataPreview({ data, clearTablesForm }) {
 
-    const tableHeadlines = ['מטרות', 'מפתח מטרות', 'יעדים', 'מפתח יעדים', 'נושאים', 'מפתח נושאים', 'מפתח שאלות']
-    const [objective, objectiveId, goal, goalId, category, categoryId, questions] = data
+    const tableHeadlines = ['מטרות', 'יעדים', 'נושאים', 'מפתח שאלות']
+
+    const calculateRowSpans = (rows, key) => {
+        const spans = {}
+        let prevValue = null
+        let count = 0
+        let startIdx = 0
+
+        rows.forEach((row, i) => {
+            if (row[key] !== prevValue) {
+                if (count > 0) {
+                    spans[startIdx] = count
+                }
+                prevValue = row[key]
+                count = 1
+                startIdx = i
+            } else {
+                count++
+            }
+        })
+
+        if (count > 0) {
+            spans[startIdx] = count
+        }
+
+        return spans
+    }
+
+    const objectiveSpans = calculateRowSpans(data, 'objective')
+    const goalSpans = calculateRowSpans(data, 'goal')
+    const categorySpans = calculateRowSpans(data, 'category')
 
     return (
         <>
             <table className="data-preview">
                 <thead>
                     <tr>
-                        {
-                            [...tableHeadlines].map((headline, i) => <th key={i}>{headline}</th>)
-                        }
+                        {[...tableHeadlines].map((headline, i) =>
+                            <th key={i}>{headline}</th>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(row =>
-                        <tr key={row.category_id}>
-                            <td>{row.objective}</td>
-                            <td>{row.objective_id}</td>
-                            <td>{row.goal}</td>
-                            <td>{row.goal_id}</td>
-                            <td>{row.category}</td>
-                            <td>{row.category_id}</td>
+                    {data.map((row, i) =>
+                        <tr key={i}>
+                            {objectiveSpans[i] && (
+                                <td rowSpan={objectiveSpans[i]}>{row.objective}</td>
+                            )}
+                            {goalSpans[i] && (
+                                <td rowSpan={goalSpans[i]}>{row.goal}</td>
+                            )}
+                            {categorySpans[i] && (
+                                <td rowSpan={categorySpans[i]}>{row.category}</td>
+                            )}
                             <td>{row.question_ids}</td>
                         </tr>
                     )}
