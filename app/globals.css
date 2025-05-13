@@ -47,6 +47,8 @@
   --secondary-background-color: #F8F4FD;
   --light-bg-color: #fff;
   --table-border: #444;
+  --color-green: #00660E;
+  --color-gray-1: #9C9C9C;
 }
 
 body {
@@ -176,6 +178,16 @@ p {
 
   .loader-bar & {
     margin-block-start: .5em;
+  }
+
+  &.upload-indicator {
+    padding: .5em;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+
+    text-align: center;
+    background-color: var(--light-bg-color);
+    color: var(--color-gray-1);
   }
 }
 

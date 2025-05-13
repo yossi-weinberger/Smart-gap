@@ -1,0 +1,12 @@
+.survey-data-status {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    color: var(--color-green);
+}
+
+.upload-indicator {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
