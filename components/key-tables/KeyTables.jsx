@@ -38,12 +38,14 @@ export default function KeyTables({ tables, handleChange, data, clearTablesForm,
                     <div className="form-header">
                         <h3 className="form-headline rtl-text">קבצי מפתחות</h3>
                         {data ?
-                            <p className="description rtl-text">קליטת המערכת לקבצי המפתחות</p> :
+                            <p className="description rtl-text">קליטת המערכת לקבצי המפתחות</p>
+                            :
                             <p className="description rtl-text">קבצי sheets לפי הוראות צוות הפיתוח של smart gap. שילוב הטבלאות מגדיר למערכת כיצד לנתח את הנתונים</p>
                         }
                     </div>
 
-                    {data ? <DataPreview data={data} clearTablesForm={clearTablesForm} /> :
+                    {data ? <DataPreview data={data} clearTablesForm={clearTablesForm} />
+                        :
                         <>
                             {linkInputs.map((item, i) =>
                                 <div className="link-section" key={i}>

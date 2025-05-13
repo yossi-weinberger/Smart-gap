@@ -137,19 +137,13 @@ export default function DataUploadForm() {
                     isLoadingTables={isLoadingTables}
                 />
 
-                <form className="upload-form survey-form" onSubmit={handleSubmitSurveyData}>
-                    <div className="survey-data-section">
-                        <SurveyData surveyData={surveyData}
-                            handleChange={handleChange}
-                            surveyDataLoadingStatus={surveyDataLoadingStatus}
-                            clearSurveyForm={clearSurveyForm} />
-                        {!surveyDataLoadingStatus &&
-                            <button className="btn load-btn"><span>טעינת הקובץ</span></button>}
-                    </div>
-
-                    {!!isLoadingSurveyData.progress &&
-                        <LoaderBar progress={isLoadingSurveyData.progress} />}
-                </form>
+                <SurveyData surveyData={surveyData}
+                    handleChange={handleChange}
+                    surveyDataLoadingStatus={surveyDataLoadingStatus}
+                    clearSurveyForm={clearSurveyForm}
+                    onSubmit={handleSubmitSurveyData}
+                    isLoadingSurveyData={isLoadingSurveyData}
+                />
 
                 {combinedData && surveyDataLoadingStatus && (<button className="btn load-btn analyze-data-btn" onClick={analyzeData}>ביצוע ניתוח נתונים</button>)}
             </div>
