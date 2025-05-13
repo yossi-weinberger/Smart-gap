@@ -21,6 +21,10 @@
     padding: 3em 2em 2em;
 }
 
+.questionnaire-name-section {
+    padding: 3em 2em 0;
+}
+
 .form-header .description {
     font-size: .9rem;
 }
