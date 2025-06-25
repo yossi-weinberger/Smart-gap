@@ -18,10 +18,12 @@
     display: grid;
     gap: 2em;
     justify-content: start;
-    padding: 3em 2em 2em;
 }
 
-.questionnaire-name-section {
+.forms {
+    display: grid;
+    gap: 3em;
+    width: clamp(10em, 80%, 44em);
     padding: 3em 2em 0;
 }
 
@@ -34,7 +36,7 @@
 }
 
 .link-input {
-    width: 80%;
+    width: 100%;
 }
 
 .tables-section {
@@ -51,9 +53,9 @@ input[type="text"] {
     font-family: inherit;
 }
 
-.analyze-data-btn-container {
+/* .analyze-data-btn-container {
     padding: 2em 2em 0;
-}
+} */
 
 .load-btn {
     position: relative;
