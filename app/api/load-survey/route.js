@@ -31,75 +31,72 @@ export async function POST(req, res) {
             projectId: process.env.GCP_PROJECT_ID,
         })
 
-        const datasetId = 'smartgap_dataset'
+        const datasetId = 'smartgap_dataset_v2'
 
-        await ensureTableExists(bigquery, datasetId, 'survey_responses', [
-            { name: 'data', type: 'STRING' }
+        const demographicsCols = ['d101', 'd102', 'd103', 'd104', 'd105', 'd106', 'd107', 'd108']
+        const answerPrefixRegex = /^d\d{3}$/  // matches all d### fields
+
+        await ensureTableExists(bigquery, datasetId, 'demographic_responses', [
+            { name: 'user_id', type: 'STRING' },
+            ...demographicsCols.map(col => ({ name: col, type: 'STRING' }))
         ])
 
+        await ensureTableExists(bigquery, datasetId, 'survey_answers_long', [
+            { name: 'user_id', type: 'STRING' },
+            { name: 'question_id', type: 'STRING' },
+            { name: 'answer', type: 'FLOAT64' }
+        ])
 
-        const transformedRows = dataFromSurvey.map(entry => {
-            const { ...rest } = entry
+        const demographicRows = []
+        const answerRows = []
 
-            return {
-                data: JSON.stringify(rest)
+        console.log('dataFromSurvey', dataFromSurvey[0])
+
+        dataFromSurvey.forEach((entry, i) => {
+            // const userId = entry['user_id']?.toString().trim()
+            // console.log('userId', userId)
+            // if (!userId) return // skip if no user_id
+
+            const demographics = { user_id: i }
+
+            for (const [key, value] of Object.entries(entry)) {
+                if (key === 'user_id') continue
+
+                if (demographicsCols.includes(key)) {
+                    demographics[key] = value?.toString().trim() || null
+                }
+
+                else if (answerPrefixRegex.test(key)) {
+                    const numericValue = parseFloat(value)
+                    if (!isNaN(numericValue)) {
+                        answerRows.push({
+                            user_id: i,
+                            question_id: key,
+                            answer: numericValue
+                        })
+                    }
+                }
             }
+            demographicRows.push(demographics)
         })
 
-        try {
-            await bigquery.dataset(datasetId).table('survey_responses').insert(transformedRows)
+        console.log('demographicRows', demographicRows)
+        console.log('answerRows', answerRows)
 
+        try {
+            if (demographicRows.length) {
+                await bigquery.dataset(datasetId).table('demographic_responses').insert(demographicRows)
+            }
+            if (answerRows.length) {
+                await bigquery.dataset(datasetId).table('survey_answers_long').insert(answerRows)
+            }
+
+            return NextResponse.json({ status: 'הקובץ הועלה בהצלחה' })
         } catch (err) {
-            console.error('Cannot insert data:', err)
-            return NextResponse.json({ error: 'Cannot insert survey data' }, { status: 500 })
+            console.error('Error inserting data into BigQuery:', err)
+            return NextResponse.json({ error: 'Failed to insert into one or more tables' }, { status: 500 })
         }
 
-        const categoriesTable = `${datasetId}.categories`
-        const goalsTable = `${datasetId}.goals`
-
-        //     const [rows] = await bigquery.query({
-        //         query: `
-        //        WITH category_expanded AS (
-        //         SELECT
-        //             category_id,
-        //             category_name,
-        //             question_id
-        //    FROM
-        //     \`${categoriesTable}\`,
-        //     UNNEST(question_ids) AS question_id
-        //         ),
-
-        //         goal_expanded AS (
-        //         SELECT
-        //             g.goal_id,
-        //             g.goal_name,
-        //             c.category_id,
-        //             c.category_name,
-        //             c.question_id
-        //         FROM
-        //     \`${goalsTable}\` g,
-        //             UNNEST(g.category_ids) AS category_id
-        //         JOIN category_expanded c
-        //             USING (category_id)
-        //         )
-
-        //         SELECT
-        //         goal_name AS goal,
-        //         goal_id,
-        //         category_name AS category,
-        //         category_id,
-        //         STRING_AGG(DISTINCT question_id, ', ' ORDER BY question_id) AS question_ids
-        //         FROM
-        //         goal_expanded
-        //         GROUP BY
-        //         goal, goal_id, category, category_id
-        //         ORDER BY
-        //         goal_id, category_id;
-        //     `,
-        //         location: 'EU',
-        //     })
-
-        return NextResponse.json({ status: 'הקובץ הועלה בהצלחה' })
 
     } catch (err) {
         console.error('Error reading sheets:', err)
