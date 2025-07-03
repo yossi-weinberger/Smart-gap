@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import './DataUploadForm.css'
 import KeyTables from '../key-tables/KeyTables'
-import SurveyData from '../survey-data/surveyData'
+import SurveyData from '../survey-data/SurveyData'
 import { dataService } from '@/services/dataService'
 
 export default function DataUploadForm() {
