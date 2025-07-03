@@ -12,7 +12,7 @@ export default function SurveyData({ surveyData, handleChange, surveyDataLoading
                 {surveyDataLoadingStatus ?
                     <>
                         <div className="upload-indicator">
-                            <p className="upload-indicator">'שאלון חניכים בקהילת-תגובות'</p>
+                            <p className="upload-indicator">שאלון חניכים בקהילת-תגובות</p>
                             <p className="re-loading" onClick={clearSurveyForm}>טעינת קובץ חדש</p>
                         </div>
                         <div className="survey-data-status">
