@@ -31,7 +31,7 @@ export async function POST(req, res) {
             projectId: process.env.GCP_PROJECT_ID,
         })
 
-        const datasetId = 'smartgap_dataset_v2'
+        const datasetId = 'smartgap_dataset'
 
         const demographicsCols = ['d101', 'd102', 'd103', 'd104', 'd105', 'd106', 'd107', 'd108']
         const answerPrefixRegex = /^d\d{3}$/  // matches all d### fields
@@ -50,13 +50,9 @@ export async function POST(req, res) {
         const demographicRows = []
         const answerRows = []
 
-        console.log('dataFromSurvey', dataFromSurvey[0])
+        // console.log('dataFromSurvey', dataFromSurvey[0])
 
         dataFromSurvey.forEach((entry, i) => {
-            // const userId = entry['user_id']?.toString().trim()
-            // console.log('userId', userId)
-            // if (!userId) return // skip if no user_id
-
             const demographics = { user_id: i }
 
             for (const [key, value] of Object.entries(entry)) {
@@ -79,9 +75,6 @@ export async function POST(req, res) {
             }
             demographicRows.push(demographics)
         })
-
-        console.log('demographicRows', demographicRows)
-        console.log('answerRows', answerRows)
 
         try {
             if (demographicRows.length) {

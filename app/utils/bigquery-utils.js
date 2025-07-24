@@ -1,11 +1,17 @@
 export async function ensureTableExists(bigQueryInstance, datasetId, tableId, schema) {
-    const [tables] = await bigQueryInstance.dataset(datasetId).getTables()
-    const tableNames = tables.map(t => t.id)
+    const dataset = bigQueryInstance.dataset(datasetId)
+    const table = dataset.table(tableId)
 
-    if (!tableNames.includes(tableId)) {
+    const [exists] = await table.exists()
+
+    if (!exists) {
         console.log(`Creating table ${tableId}...`)
-        await bigQueryInstance.dataset(datasetId).createTable(tableId, { schema })
-        await new Promise(res => setTimeout(res, 1000))
+        await dataset.createTable(tableId, { schema })
+
+        await table.get()
         console.log(`Table ${tableId} created.`)
+    } else {
+        console.log(`Table ${tableId} already exists.`)
     }
+
 }

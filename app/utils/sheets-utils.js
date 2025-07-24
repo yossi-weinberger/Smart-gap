@@ -10,7 +10,7 @@ export async function getSheetDataFromUrl(url, sheets) {
     const spreadsheetId = extractId(url)
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: 'A1:Z1000',
+        range: 'A1:AP1000',
     })
 
     const [headers, ...rows] = response.data.values

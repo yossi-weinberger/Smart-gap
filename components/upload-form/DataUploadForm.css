@@ -22,7 +22,7 @@
 
 .forms {
     display: grid;
-    gap: 3em;
+    gap: 2em;
     width: clamp(10em, 80%, 44em);
     padding: 3em 2em 0;
 }

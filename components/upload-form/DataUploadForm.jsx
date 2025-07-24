@@ -122,9 +122,9 @@ export default function DataUploadForm() {
         <section className="files rtl-text">
             <div className="form-container">
                 <h2 className="feature-text">העלאת קבצים</h2>
-                <svg className="folder-shape" viewBox="0 0 1370 809" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg className="folder-shape" viewBox="0 0 1370 809" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.5 8.00001C0.5 3.85788 3.85787 0.5 8 0.5H1094.91C1097.05 0.5 1099.09 1.4161 1100.51 3.01723L1130.58 36.8457C1132.2 38.6603 1134.51 39.6986 1136.94 39.6986H1362C1366.14 39.6986 1369.5 43.0564 1369.5 47.1986V801C1369.5 805.142 1366.14 808.5 1362 808.5H7.99999C3.85785 808.5 0.5 805.142 0.5 801V8.00001Z" stroke="#CCCCCC" />
-                </svg>
+                </svg> */}
 
                 <div className="forms">
                     <div className="form-header questionnaire-name-section">
